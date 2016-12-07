@@ -1,0 +1,16 @@
+{
+  "name": "techmininggraph",
+  "version": "1.0.0",
+  "description": "tech mining graph , showing relations between technologies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "soroush yousefi",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.9",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {}
+}
