@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="techMiningGraph" ng-controller="mainCtrl">
 
+<link rel="icon" type="image/png" href="assets/images/logo%20copy.png">
 <!--   ***** styles  ***** -->
 
 <!-- libraries -->
@@ -8,18 +9,30 @@
 
 <!-- custom styles -->
 <link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/custom.css">
+
 
 <!--   ***** scripts  ***** -->
 
 <!-- libraries -->
 
 <script src="app/bower_components/angular/angular.min.js"></script>
+<script src="app/bower_components/angular-route/angular-route.min.js"></script>
+<script src="app/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="assets/js/d3.min.js"></script>
 <!-- angular application code -->
 
 <script src="app/app.js"></script>
+
+<!-- controllers -->
+
 <script src="app/mainController.js"></script>
+<script src="app/components/searchBar/searchBarController.js"></script>
+
+<!-- route -->
+
+<script src="app/routes.js"></script>
 
 
 <head>
@@ -29,11 +42,37 @@
 </head>
 <body >
 
-<div class="col-md-8 col-lg-offset-2">
-   <span><img src="assets/images/logo.png" alt=""></span><h2>Tech mining graph</h2>
-</div>
+<div class="container-fluid">
 
-<div class="container container-fluid" ng-view>
+
+
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 leftMenu">
+            <div class="row borderBottom">
+                    <img class="logoImage col-md-3" src="assets/images/logo.png"/>
+                    <h3 class="logoTitle col-md-8">{{title}}</h3>
+            </div>
+            <div class="row">
+                <div class="menuList">
+                    <ul>
+                        <li><a href="#/searchBar" ng-click="activeLi()" ng-class="{'activeLi' : isActive}"  class="listMiddle">Home</a></li>
+                        <li><a href="/" ng-click="activeLi()" ng-class="{'activeLi' : isActive}" class="listMiddle">View</a></li>
+                        <li><a href="/" ng-click="activeLi()" ng-class="{'activeLi' : isActive}" class="listMiddle">Settings</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 mainSection">
+            <div ng-view>
+
+            </div>
+
+        </div>
+    </div>
 
 
 </div>
