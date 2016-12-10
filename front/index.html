@@ -24,6 +24,8 @@
 <!-- angular application code -->
 
 <script src="app/app.js"></script>
+<script src="app/config.js"></script>
+
 
 <!-- controllers -->
 
@@ -48,17 +50,14 @@
 
     <div class="row">
         <div class="col-xs-2 col-sm-2 col-md-2 leftMenu">
-            <div class="row borderBottom">
+            <div class="row borderBottom logoSection">
                     <img class="logoImage col-md-3" src="assets/images/logo.png"/>
                     <h3 class="logoTitle col-md-8">{{title}}</h3>
             </div>
             <div class="row">
                 <div class="menuList">
                     <ul>
-                        <li><a href="#/searchBar" ng-click="activeLi()" ng-class="{'activeLi' : isActive}"  class="listMiddle">Home</a></li>
-                        <li><a href="/" ng-click="activeLi()" ng-class="{'activeLi' : isActive}" class="listMiddle">View</a></li>
-                        <li><a href="/" ng-click="activeLi()" ng-class="{'activeLi' : isActive}" class="listMiddle">Settings</a></li>
-
+                        <li ng-repeat="item in items" ng-click="changeSate(item)"><a href="{{item.href}}" ng-class="{'activeLi' : item.id == activeItem}"   class="listMiddle">{{item.title}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -67,7 +66,7 @@
 
         </div>
         <div class="col-xs-10 col-sm-10 col-md-10 mainSection">
-            <div ng-view>
+            <div ng-view >
 
             </div>
 

@@ -5,12 +5,15 @@
 
 
 app.controller('mainCtrl', function ($scope) {
-    $scope.title = "Tech mining graph";
-    $scope.isActive = false;
-    $scope.activeLi = function () {
-        $scope.isActive = !$scope.isActive;
-    }
 
+    $scope.title = "Tech Graph";
+    $scope.activeItem = 'item1';
+    $scope.items = menuItems;
+
+
+    $scope.changeSate = function (item) {
+        $scope.activeItem = item.id;
+    }
 
 
 

@@ -2,7 +2,7 @@ html, body {
     height: 100% !important;
 }
 .container-fluid {
-    height: 100% !important;
+    height: 100% ;
 }
 .marginTop10 {
     margin-top: 10px;
@@ -17,6 +17,19 @@ html, body {
 .borderBottom {
     border-bottom: 1px solid white;
 }
+.graphView {
+    background-color: #496387;
+    border-radius: 5px;
+}
+.graphView h2 {
+    color: #CDC966;
+    border-bottom: 3px solid #7186A4;
+    padding-bottom: 10px;
+}
+.graphWindow {
+    background-color: white;
+    height: 80%;
+}
 .leftMenu {
     background-color: #061A37;
     border-bottom-left-radius: 5px;
@@ -30,15 +43,39 @@ html, body {
 }
 .logoImage {
     margin-left: 10px;
-    margin-top: 15px;
+    margin-top: 5px;
+}
+.logoSection {
+    margin-top: 10px;
+    padding-bottom: 10px;
 }
 .mainSection {
+    border-right: 3px solid #061A37;
     background-color: white;
+}
+.searchLabel {
+    font-size: x-large;
+    margin-right: 10px;
+}
+#searchInput {
+    width: 60%;
+    margin-top: 10px;
+    background-color: rgba(113,134,164, 0.2) ;
+}
+.menuList {
+    margin-top: 20px;
 }
 .menuList a {
     color: white;
     text-align: center;
     text-decoration: none;
+}
+.searchSection {
+    border-bottom: 3px solid #061A37;
+    padding-bottom: 10px;
+}
+.btnSearchInput {
+    width: 10%;
 }
 .menuList li {
 }
@@ -47,6 +84,7 @@ html, body {
    background-color: #7186A4;
     color: #061A37;
 }
+
 
 .activeLi {
     background-color: white;

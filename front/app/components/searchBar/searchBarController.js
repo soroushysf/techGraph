@@ -4,5 +4,12 @@
 
 
 app.controller('searchBarCtrl', function ($scope) {
-    $scope.searchTitle = "your input...";
+    $scope.searchTitle = "Enter your query...";
+
+    $scope.graphViewTitle = "Graph View";
+
+
+
+
+    $(".graphView").height(($(".container-fluid").height())*0.7);
 });

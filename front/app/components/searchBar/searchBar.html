@@ -1,6 +1,13 @@
 <div ng-controller="searchBarCtrl">
-    <div class="col-md-6 col-md-offset-3 marginTop10">
-        <label for="searchInput">Search : </label>
-        <input id="searchInput" class="input-lg" type="text" value="{{ searchTitle }}">
+    <div class="col-md-12  marginTop10 searchSection">
+        <label for="searchInput" class="searchLabel">Search the Graph : </label>
+        <input id="searchInput" class="input-lg" type="text" placeholder="{{ searchTitle }}">
+        <button class="btn btn-success btn-lg btnSearchInput">Enter</button>
+    </div>
+    <div class="graphView col-md-12 marginTop10">
+        <h2 class="marginTop10 col-md-12 ">{{graphViewTitle}}</h2>
+        <div class="graphWindow col-md-12">
+
+        </div>
     </div>
 </div>
