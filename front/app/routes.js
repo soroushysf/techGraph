@@ -7,7 +7,7 @@ app.config(['$routeProvider','$locationProvider' ,function ($routeProvider, $loc
     $locationProvider.html5Mode(false);
     $routeProvider
         .when('/', {
-            templateUrl : 'app/index.html',
+            templateUrl : 'app/components/searchBar/searchBar.html',
             controller : 'mainCtrl'
         })
         .when('/searchBar', {
