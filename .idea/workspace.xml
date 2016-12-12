@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="354c8119-3404-4324-ba81-2af55bb82c8d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/assets/font/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/assets/font/fontawesome-webfont.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/assets/font/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/assets/font/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/assets/css/font-awesome.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/front/assets/font/fontawesome-webfont.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/app/components/searchBar/searchBar.html" afterPath="$PROJECT_DIR$/front/app/components/searchBar/searchBar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/app/components/GraphView/graphController.js" afterPath="$PROJECT_DIR$/front/app/components/GraphView/graphController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/app/components/GraphView/graphView.html" afterPath="$PROJECT_DIR$/front/app/components/GraphView/graphView.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/app/config.js" afterPath="$PROJECT_DIR$/front/app/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/app/directives.js" afterPath="$PROJECT_DIR$/front/app/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/assets/css/custom.css" afterPath="$PROJECT_DIR$/front/assets/css/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/index.html" afterPath="$PROJECT_DIR$/front/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -64,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="directives.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="directives.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/app/directives.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="77" column="66" lean-forward="false" selection-start-line="77" selection-start-column="66" selection-end-line="77" selection-end-column="66" />
+            <state relative-caret-position="270">
+              <caret line="76" column="48" lean-forward="false" selection-start-line="76" selection-start-column="48" selection-end-line="76" selection-end-column="48" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -76,21 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/assets/css/custom.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="graphController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="graphController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/front/app/components/GraphView/graphController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="345">
+              <caret line="23" column="37" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -100,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/front/app/components/GraphView/graphView.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="3" column="60" lean-forward="false" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
+              <caret line="3" column="42" lean-forward="false" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -109,8 +92,8 @@
       <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/app/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            <state relative-caret-position="313">
+              <caret line="80" column="36" lean-forward="true" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -146,6 +129,26 @@
       <find>menuList</find>
       <find>node</find>
       <find>link</find>
+      <find>&quot;1&quot;</find>
+      <find>&quot;2&quot;</find>
+      <find>&quot;3&quot;</find>
+      <find>&quot;4&quot;</find>
+      <find>&quot;5&quot;</find>
+      <find>&quot;6&quot;</find>
+      <find>&quot;7&quot;</find>
+      <find>&quot;8&quot;</find>
+      <find>&quot;9&quot;</find>
+      <find>&quot;10&quot;</find>
+      <find>&quot;11&quot;</find>
+      <find>&quot;12&quot;</find>
+      <find>&quot;13&quot;</find>
+      <find>&quot;14&quot;</find>
+      <find>&quot;15&quot;</find>
+      <find>&quot;16&quot;</find>
+      <find>&quot;17&quot;</find>
+      <find>&quot;18&quot;</find>
+      <find>&quot;19&quot;</find>
+      <find>weighted_similarity</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,12 +175,12 @@
         <option value="$PROJECT_DIR$/front/app/factory.js" />
         <option value="$PROJECT_DIR$/front/app/app.js" />
         <option value="$PROJECT_DIR$/front/app/components/searchBar/searchBarController.js" />
-        <option value="$PROJECT_DIR$/front/app/components/GraphView/graphController.js" />
-        <option value="$PROJECT_DIR$/front/app/components/GraphView/graphView.html" />
         <option value="$PROJECT_DIR$/front/app/components/searchBar/searchBar.html" />
-        <option value="$PROJECT_DIR$/front/app/config.js" />
         <option value="$PROJECT_DIR$/front/index.html" />
         <option value="$PROJECT_DIR$/front/assets/css/custom.css" />
+        <option value="$PROJECT_DIR$/front/app/components/GraphView/graphView.html" />
+        <option value="$PROJECT_DIR$/front/app/config.js" />
+        <option value="$PROJECT_DIR$/front/app/components/GraphView/graphController.js" />
         <option value="$PROJECT_DIR$/front/app/directives.js" />
       </list>
     </option>
@@ -466,7 +469,7 @@
       <workItem from="1481096147864" duration="8918000" />
       <workItem from="1481366210820" duration="11317000" />
       <workItem from="1481441179126" duration="15042000" />
-      <workItem from="1481529179705" duration="5989000" />
+      <workItem from="1481529179705" duration="12653000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1481094254746</created>
@@ -510,11 +513,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481529337588</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="tooltip added">
+      <created>1481539567306</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1481539567306</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48715000" />
+    <option name="totallyTimeSpent" value="55379000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="39" width="1680" height="972" extended-state="0" />
@@ -549,7 +559,8 @@
     <MESSAGE value="1" />
     <MESSAGE value="view graph box" />
     <MESSAGE value="setting graph view as directive and connecting it to controller&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="setting graph view as directive and connecting it to controller&#10;" />
+    <MESSAGE value="tooltip added" />
+    <option name="LAST_COMMIT_MESSAGE" value="tooltip added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -858,14 +869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/app/components/GraphView/graphController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/app/components/searchBar/searchBarController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -884,10 +887,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/app/components/searchBar/searchBar.html">
+    <entry file="file://$PROJECT_DIR$/front/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="76" lean-forward="false" selection-start-line="4" selection-start-column="76" selection-end-line="4" selection-end-column="76" />
+          <caret line="4" column="56" lean-forward="false" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/assets/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -895,15 +906,7 @@
     <entry file="file://$PROJECT_DIR$/front/app/components/GraphView/graphView.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="60" lean-forward="false" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="56" lean-forward="false" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
+          <caret line="3" column="42" lean-forward="false" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -916,31 +919,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/app/config.js">
+    <entry file="file://$PROJECT_DIR$/front/app/components/searchBar/searchBar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="76" lean-forward="false" selection-start-line="4" selection-start-column="76" selection-end-line="4" selection-end-column="76" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/assets/css/custom.css">
+    <entry file="file://$PROJECT_DIR$/front/app/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding />
+        <state relative-caret-position="313">
+          <caret line="80" column="36" lean-forward="true" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/front/app/directives.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="77" column="66" lean-forward="false" selection-start-line="77" selection-start-column="66" selection-end-line="77" selection-end-column="66" />
+        <state relative-caret-position="270">
+          <caret line="76" column="48" lean-forward="false" selection-start-line="76" selection-start-column="48" selection-end-line="76" selection-end-column="48" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/app/components/GraphView/graphController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="37" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>

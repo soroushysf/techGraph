@@ -44,7 +44,7 @@ app.directive('graphView' , function () {
                         .force("link", d3.forceLink().id(function (d) {
                             return d.id
                         }).distance(function (d) {
-                            return d.value * 60
+                            return d.value * 22
                         }))
                         .force("charge", d3.forceManyBody())
                         .force("center", d3.forceCenter(width / 2, height / 2))
@@ -57,7 +57,7 @@ app.directive('graphView' , function () {
                     .data(links)
                     .enter().append("line")
                     .attr("stroke-width", function (d) {
-                        return d.value * 1.5;
+                        return d.value * 0.1;
                     })
                     .attr("stroke", "#333");
 
@@ -74,7 +74,7 @@ app.directive('graphView' , function () {
                         .on('mouseover', function (d) {
                             toolTip
                                 .style('display', 'block')
-                            toolTip.html(d.id)
+                            toolTip.html(d.title)
                                 .style('left', (d3.event.pageX +10)+'px')
                                 .style('top', (d3.event.pageY)+'px')
 
