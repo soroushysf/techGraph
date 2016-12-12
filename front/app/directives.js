@@ -24,17 +24,19 @@ app.directive('graphView' , function () {
                 var height = $('.graphWindow').height(),
                     width = $('.graphWindow').width();
                 var color = d3.scaleOrdinal(d3.schemeCategory20),
-                    toolTip = d3.select('div').append('div')
+                    toolTip = d3.select('body').append('div')
                         .style('position', 'absolute')
-                        .style('opacity', 0)
                         .style('padding', '5px 10px')
-                        .style('background', 'white')
+                        .style('background', '#303030')
+                        .style('color', 'white')
+                        .style('display', 'none')
                     ;
 
                 var myChart = d3.select(element[0]).append('svg')
                         .style("width", width)
                         .style("height", height)
                         .style("background", "white")
+                        .attr('class', 'mainSvg')
                     ;
 
 
@@ -63,25 +65,36 @@ app.directive('graphView' , function () {
                         .selectAll("circle")
                         .data(nodes)
                         .enter().append("circle")
-                        .attr("r", 10)
+                        .attr("r", 20)
                         .attr("fill", function (d, i) {
                             return color(i);
                         })
 
+
                         .on('mouseover', function (d) {
                             toolTip
-                                .style('opacity', 1)
+                                .style('display', 'block')
                             toolTip.html(d.id)
+                                .style('left', (d3.event.pageX +10)+'px')
+                                .style('top', (d3.event.pageY)+'px')
 
+
+
+                        })
+                        .on("mouseout", function() {
+                            toolTip
+                                .style('display', 'none')
 
                         })
                         .call(d3.drag()
                             .on("start", dragstarted)
                             .on("drag", dragged)
                             .on("end", dragended))
-
-
                     ;
+
+
+
+
 
                 simulation
                     .nodes(nodes)
@@ -114,6 +127,7 @@ app.directive('graphView' , function () {
                         .attr("cy", function (d) {
                             return d.y;
                         });
+
                 }
 
                 function dragstarted(d) {

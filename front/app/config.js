@@ -6,18 +6,21 @@ var menuItems = [
     {
         title : "Home",
         href : '#/searchBar',
-        id : "item1"
+        id : "item1",
+        icon : "icon-home"
     },
     {
         title : "View",
         href : '/',
-        id : "item2"
+        id : "item2",
+        icon : "fa fa-bar-chart"
 
     },
     {
         title : "Settings",
         href : '/',
-        id : "item3"
+        id : "item3",
+        icon : "fa fa-cog"
 
     }
 ];

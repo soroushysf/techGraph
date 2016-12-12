@@ -1,6 +1,9 @@
 html, body {
     height: 100% !important;
 }
+.mainSvg {
+    pointer-events: all;
+}
 .container-fluid {
     height: 100% ;
 }
