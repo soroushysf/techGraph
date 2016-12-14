@@ -19,7 +19,10 @@ app.directive('graphView' , function () {
 
             scope.$watchGroup(['d3Links', 'd3Nodes'], function (newValues) {
 
-                var nodes = newValues[1], links = newValues[0];
+                var nodes = newValues[1], links = newValues[0]
+                    ;
+
+
 
                 var height = $('.graphWindow').height(),
                     width = $('.graphWindow').width();
@@ -32,12 +35,14 @@ app.directive('graphView' , function () {
                         .style('display', 'none')
                     ;
 
+
                 var myChart = d3.select(element[0]).append('svg')
                         .style("width", width)
                         .style("height", height)
                         .style("background", "white")
                         .attr('class', 'mainSvg')
                     ;
+
 
 
                 var simulation = d3.forceSimulation(nodes)
@@ -72,7 +77,7 @@ app.directive('graphView' , function () {
 
 
                         .on('mouseover', function (d) {
-                            toolTip
+                            toolTip.transition()
                                 .style('display', 'block')
                             toolTip.html(d.title)
                                 .style('left', (d3.event.pageX +10)+'px')
@@ -80,9 +85,12 @@ app.directive('graphView' , function () {
 
 
 
+
+
+
                         })
                         .on("mouseout", function() {
-                            toolTip
+                            toolTip.transition()
                                 .style('display', 'none')
 
                         })

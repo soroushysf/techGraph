@@ -1,18 +1,21 @@
 /**
  * Created by soroush on 12/6/16.
  */
-var express = require("express")
+var express = require("express"),
+    app = express(),
+    bodyParser = require('body-parser'),
     path = require("path")
     ;
 
-var app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, '../front')));
+var router = require("./router")(app, path, express, bodyParser);
 
 
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../front', 'index.html'));
-});
+
+
+
 
 
 app.listen(3000, function () {

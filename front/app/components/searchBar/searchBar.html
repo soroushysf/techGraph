@@ -1,11 +1,10 @@
 <div ng-controller="searchBarCtrl">
-    <div class="col-md-12  marginTop10 searchSection">
+    <form class="col-md-12  marginTop10 searchSection" ng-submit="sendData()">
         <label for="searchInput" class="searchLabel"><i class="icon-search"></i> Search the Graph : </label>
         <input id="searchInput" class="input-lg" type="text" placeholder="{{ searchTitle }}">
-        <button class="btn btn-success btn-lg btnSearchInput">Enter</button>
-    </div>
+        <button class="btn btn-success btn-lg btnSearchInput" type="submit">Enter</button>
+    </form>
 </div>
-
 
 <div ng-include="'app/components/GraphView/graphView.html'"></div>
 

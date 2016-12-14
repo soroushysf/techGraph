@@ -7,8 +7,7 @@ app.controller('graphController', function ($scope) {
 
     $scope.graphViewTitle = "Graph View";
 
-    // $scope.createdLinks = links;
-    // $scope.createdNodes = nodes;
+
 
 
     $scope.createdLinks = newLinks.map(function (link) {
