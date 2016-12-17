@@ -15,12 +15,20 @@ app.directive('graphView' , function () {
 
 
     function d3Draw(scope, element, attr) {
+            var dataSet = [
+                { label: 'Abulia', count: 10 },
+                { label: 'Betelgeuse', count: 10 },
+                { label: 'Cantaloupe', count: 10 },
+                { label: 'Dijkstra', count: 10 }
+            ];
 
 
             scope.$watchGroup(['d3Links', 'd3Nodes'], function (newValues) {
 
                 var nodes = newValues[1], links = newValues[0]
                     ;
+                var tau = 2 * Math.PI; // http://tauday.com/tau-manifesto
+
 
 
 
@@ -66,6 +74,8 @@ app.directive('graphView' , function () {
                     })
                     .attr("stroke", "#333");
 
+
+
                 var node = myChart.append("g")
                         .selectAll("circle")
                         .data(nodes)
@@ -74,26 +84,32 @@ app.directive('graphView' , function () {
                         .attr("fill", function (d, i) {
                             return color(i);
                         })
+                        .style('cursor', 'pointer');
 
 
-                        .on('mouseover', function (d) {
-                            toolTip.transition()
+
+                       node.on('mouseover', function (d) {
+
+                            toolTip
+                                .html(d.title)
                                 .style('display', 'block')
-                            toolTip.html(d.title)
-                                .style('left', (d3.event.pageX +10)+'px')
-                                .style('top', (d3.event.pageY)+'px')
+                                .style('left', (d3.event.pageX +20) + 'px')
+                                .style('top', d3.event.pageY + 10+ 'px')
 
-
-
-
+                            d3.select("#nodeName").html(d.title);
 
 
                         })
+                           .on('click', function (d) {
+
+                           })
+
                         .on("mouseout", function() {
                             toolTip.transition()
-                                .style('display', 'none')
+                                .style('display', 'none');
 
                         })
+
                         .call(d3.drag()
                             .on("start", dragstarted)
                             .on("drag", dragged)

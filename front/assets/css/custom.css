@@ -10,6 +10,11 @@ html, body {
 .marginTop10 {
     margin-top: 10px;
 }
+.graphData {
+    color : white;
+    margin-right: 20px;
+}
+
 .listMiddle {
     display: block;
     margin: 0px auto;

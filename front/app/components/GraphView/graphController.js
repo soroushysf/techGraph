@@ -23,6 +23,8 @@ app.controller('graphController', function ($scope) {
             'title' : node.term_title
         }
     })
+    $scope.nodeCounts = $scope.createdNodes.length;
+    $scope.linkCounts = $scope.createdLinks.length;
 
     console.log($scope.createdLinks);
     console.log($scope.createdNodes);
