@@ -1,0 +1,52 @@
+
+<div ng-include="'app/components/searchBar/searchBar.html'"></div>
+
+
+<div class=" col-md-12 marginTop10" ng-controller="graphTableController">
+
+    <!--<div class="graphWindow col-md-12">-->
+        <div class="panel panel-primary graphTable">
+            <div class="panel-heading">
+                <h2 ><i class="fa fa-table" aria-hidden="true"> {{graphTableTitle}}</i>
+                </h2>
+                <span class="pull-right">
+                </span>
+            </div>
+            <div class="panel-body">
+                <label for="dev-table-filter">Filter table by node names :</label>
+                <input type="text" class="input-sm" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Nodes" />
+            </div>
+            <table class="table table-hover" id="dev-table">
+                <thead class="tableHeader">
+                <tr>
+                    <th>#</th>
+                    <th>Node Name</th>
+                    <th>ID</th>
+                    <th>Node Color</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Kilgore</td>
+                    <td>Trout</td>
+                    <td>kilgore</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Bob</td>
+                    <td>Loblaw</td>
+                    <td>boblahblah</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Holden</td>
+                    <td>Caulfield</td>
+                    <td>penceyreject</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<!--</div>-->

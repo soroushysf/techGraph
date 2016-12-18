@@ -8,6 +8,12 @@ var arc = d3.arc()
         .startAngle(0)
     ;
 
+var dataSet = [
+    { label: 'Abulia', count: 10 },
+    { label: 'Betelgeuse', count: 10 },
+    { label: 'Cantaloupe', count: 10 },
+    { label: 'Dijkstra', count: 10 }
+];
 var pie = d3.pie()
     .value(function (d) {
         return d.count;

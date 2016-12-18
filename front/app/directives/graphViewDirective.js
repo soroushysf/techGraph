@@ -15,19 +15,13 @@ app.directive('graphView' , function () {
 
 
     function d3Draw(scope, element, attr) {
-            var dataSet = [
-                { label: 'Abulia', count: 10 },
-                { label: 'Betelgeuse', count: 10 },
-                { label: 'Cantaloupe', count: 10 },
-                { label: 'Dijkstra', count: 10 }
-            ];
+
 
 
             scope.$watchGroup(['d3Links', 'd3Nodes'], function (newValues) {
 
                 var nodes = newValues[1], links = newValues[0]
                     ;
-                var tau = 2 * Math.PI; // http://tauday.com/tau-manifesto
 
 
 
@@ -89,10 +83,11 @@ app.directive('graphView' , function () {
 
 
                        node.on('mouseover', function (d) {
+                           toolTip.transition()
+                               .style('display', 'block')
 
                             toolTip
                                 .html(d.title)
-                                .style('display', 'block')
                                 .style('left', (d3.event.pageX +20) + 'px')
                                 .style('top', d3.event.pageY + 10+ 'px')
 
@@ -100,9 +95,7 @@ app.directive('graphView' , function () {
 
 
                         })
-                           .on('click', function (d) {
 
-                           })
 
                         .on("mouseout", function() {
                             toolTip.transition()

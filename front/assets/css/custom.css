@@ -10,6 +10,10 @@ html, body {
 .marginTop10 {
     margin-top: 10px;
 }
+.tableHeader {
+    background-color:#7186A4;
+    color: white;
+}
 .graphData {
     color : white;
     margin-right: 20px;
@@ -29,6 +33,9 @@ html, body {
     background-color: #496387;
     border-radius: 5px;
 }
+.panel-heading {
+    background-color: #496387 !important;
+}
 .graphView h2 {
     color: #CDC966;
     border-bottom: 3px solid #7186A4;
@@ -37,6 +44,15 @@ html, body {
 .graphWindow {
     background-color: white;
     height: 80%;
+}
+.graphTable {
+    margin-top: 20px;
+    border-color: #496387 !important;
+}
+.graphTable h2 {
+    color: #CDC966;
+    border-bottom: 3px solid #7186A4;
+    padding-bottom: 10px;
 }
 .leftMenu {
     background-color: #061A37;
@@ -65,9 +81,12 @@ html, body {
     margin-right: 10px;
 }
 #searchInput {
-    width: 60%;
-    margin-top: 10px;
+    width: 50%;
+    margin-top: 15px;
     background-color: rgba(113,134,164, 0.2) ;
+}
+#searchInput:focus {
+    outline: none;
 }
 .menuList {
     margin-top: 20px;

@@ -7,15 +7,15 @@ app.config(['$routeProvider','$locationProvider' ,function ($routeProvider, $loc
     $locationProvider.html5Mode(false);
     $routeProvider
         .when('/', {
-            templateUrl : 'app/components/searchBar/searchBar.html',
+            templateUrl : 'app/components/graphView/graphView.html',
             controller : 'mainCtrl'
         })
-        .when('/searchBar', {
-            templateUrl : 'app/components/searchBar/searchBar.html',
+        .when('/Home', {
+            templateUrl : 'app/components/graphView/graphView.html',
             controller : 'searchBarCtrl'
         })
-        .when('/home', {
-            templateUrl : 'app/components/GraphView/graphView.html',
-            controller : 'graphViewCtrl'
+        .when('/graphTable', {
+            templateUrl : 'app/components/GraphTable/graphTable.html',
+            controller : 'graphTableController'
         })
 }]);

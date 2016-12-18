@@ -5,13 +5,13 @@
 var menuItems = [
     {
         title : "Home",
-        href : '#/searchBar',
+        href : '#/Home',
         id : "item1",
         icon : "icon-home"
     },
     {
         title : "View",
-        href : '/',
+        href : '#/graphTable',
         id : "item2",
         icon : "fa fa-bar-chart"
 
