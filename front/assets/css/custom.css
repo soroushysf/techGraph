@@ -45,6 +45,7 @@ html, body {
     background-color: white;
     height: 80%;
 }
+
 .graphTable {
     margin-top: 20px;
     border-color: #496387 !important;
@@ -80,10 +81,33 @@ html, body {
     font-size: x-large;
     margin-right: 10px;
 }
+input {
+    transition: 700ms;
+    outline: none;
+    border :  2px solid #303030;
+}
+input:focus {
+    border:2px solid #00b3ee;
+}
 #searchInput {
     width: 50%;
     margin-top: 15px;
     background-color: rgba(113,134,164, 0.2) ;
+}
+.dataCenter {
+    text-align: center;
+}
+.oddBackground {
+     background-color: #e0e0e0;
+}
+.listBackground {
+    color: black;
+}
+
+.listBackground:hover {
+    background-color: #7186A4 !important;
+    color: white;
+    cursor: pointer;
 }
 #searchInput:focus {
     outline: none;

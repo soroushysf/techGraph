@@ -10,7 +10,7 @@ var menuItems = [
         icon : "icon-home"
     },
     {
-        title : "View",
+        title : "Graph Table",
         href : '#/graphTable',
         id : "item2",
         icon : "fa fa-bar-chart"

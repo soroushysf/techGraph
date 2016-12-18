@@ -13,39 +13,49 @@
                 </span>
             </div>
             <div class="panel-body">
-                <label for="dev-table-filter">Filter table by node names :</label>
-                <input type="text" class="input-sm" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Nodes" />
-            </div>
-            <table class="table table-hover" id="dev-table">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label >Search</label>
+                        <input type="text" ng-model="searchTable" class="form-control" placeholder="Search">
+                    </div>
+                </form>            </div>
+            <table class="table table-hover" id="dev-table" >
                 <thead class="tableHeader">
                 <tr>
-                    <th>#</th>
-                    <th>Node Name</th>
-                    <th>ID</th>
-                    <th>Node Color</th>
+                    <th class="dataCenter" >#
+                    </th>
+                    <th class="dataCenter">Node Names
+                    </th>
+                    <th class="dataCenter" >ID
+                    </th>
+                    <th class="dataCenter" >results returned
+                    </th>
+                    <th class="dataCenter" >completed
+                    </th>
+                    <th class="dataCenter">fis status
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Kilgore</td>
-                    <td>Trout</td>
-                    <td>kilgore</td>
+                <tr dir-paginate="node in createdNodes |orderBy:sortKey:reverse|filter :searchTable|itemsPerPage:5" class="listBackground" ng-class="{'oddBackground' : $even}">
+                    <td class="dataCenter" >{{$index + 1}}</td>
+                    <td class="dataCenter">{{node.title}}</td>
+                    <td class="dataCenter">{{node.id}}</td>
+                    <td class="dataCenter">{{node.results_returned}}</td>
+                    <td class="dataCenter">{{node.completed}}</td>
+                    <td class="dataCenter">{{node.fis_status}}</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Bob</td>
-                    <td>Loblaw</td>
-                    <td>boblahblah</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Holden</td>
-                    <td>Caulfield</td>
-                    <td>penceyreject</td>
-                </tr>
+
                 </tbody>
+
             </table>
+            <div class="col-md-4 col-md-offset-4">
+            <dir-pagination-controls class="tablePageNumber"
+                    max-size="10"
+                    direction-links="true"
+                    boundary-links="true">
+            </dir-pagination-controls>
+            </div>
         </div>
     </div>
 
