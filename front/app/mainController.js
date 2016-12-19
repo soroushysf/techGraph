@@ -4,11 +4,26 @@
 
 
 
-app.controller('mainCtrl', function ($scope) {
+app.controller('mainCtrl', function ($scope, $location) {
 
     $scope.title = "Tech Graph";
-    $scope.activeItem = 'item1';
     $scope.items = menuItems;
+
+
+    $scope.$on('$routeChangeStart', function() {
+
+        switch ($location.path()){
+            case '/graphTable' :
+                $scope.activeItem = 'item2';
+                break;
+            case '/Home' :
+                $scope.activeItem = 'item1';
+                break;
+            case '/' :
+                $scope.activeItem = 'item1';
+
+        }
+    });
 
 
     $scope.changeSate = function (item) {

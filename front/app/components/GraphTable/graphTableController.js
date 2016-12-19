@@ -3,8 +3,8 @@
  */
 
 app.controller('graphTableController', function ($scope) {
-    $scope.graphTableTitle = 'Graph Table';
 
+    $scope.graphTableTitle = 'Graph Table';
 
 
     $scope.createdNodes = newNodes.map(function (node) {
@@ -16,6 +16,7 @@ app.controller('graphTableController', function ($scope) {
             'fis_status' : node.fis_status
         }
     })
+    $scope.currentPage = 1;
 
 
 

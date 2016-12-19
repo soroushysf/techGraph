@@ -67,7 +67,7 @@
             <div class="row">
                 <div class="menuList">
                     <ul>
-                        <li ng-repeat="item in items" ng-click="changeSate(item)"><a href="{{item.href}}" ng-class="{'activeLi' : item.id == activeItem}"   class="listMiddle"><div class="{{item.icon}}"></div>  {{item.title}}</a></li>
+                        <li ng-repeat="item in items" ng-click="changeSate(item)"><a href="{{item.href}}" ng-class="{'activeLi' : (item.id == activeItem)  }"   class="listMiddle"><div class="{{item.icon}}"></div>  {{item.title}}</a></li>
                     </ul>
                 </div>
             </div>

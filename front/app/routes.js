@@ -8,11 +8,13 @@ app.config(['$routeProvider','$locationProvider' ,function ($routeProvider, $loc
     $routeProvider
         .when('/', {
             templateUrl : 'app/components/graphView/graphView.html',
-            controller : 'mainCtrl'
+            controller : 'graphController'
+
         })
         .when('/Home', {
             templateUrl : 'app/components/graphView/graphView.html',
-            controller : 'searchBarCtrl'
+            controller : 'graphController'
+
         })
         .when('/graphTable', {
             templateUrl : 'app/components/GraphTable/graphTable.html',

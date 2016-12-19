@@ -37,8 +37,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr dir-paginate="node in createdNodes |orderBy:sortKey:reverse|filter :searchTable|itemsPerPage:5" class="listBackground" ng-class="{'oddBackground' : $even}">
-                    <td class="dataCenter" >{{$index + 1}}</td>
+                <tr dir-paginate="node in createdNodes |filter :searchTable|itemsPerPage:10" current-page="currentPage"  class="listBackground" ng-class="{'oddBackground' : $even}">
+                    <td class="dataCenter" >{{ ($index + 1) + (currentPage - 1) * 10}}</td>
                     <td class="dataCenter">{{node.title}}</td>
                     <td class="dataCenter">{{node.id}}</td>
                     <td class="dataCenter">{{node.results_returned}}</td>
