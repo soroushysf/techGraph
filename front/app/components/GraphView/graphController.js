@@ -9,6 +9,7 @@ app.controller('graphController', function ($scope) {
 
 
 
+    //creating links for d3 to understand and draw
 
     $scope.createdLinks = newLinks.map(function (link) {
         return {
@@ -17,12 +18,26 @@ app.controller('graphController', function ($scope) {
             'value' : link.term_id2
         }
     });
+    //creating nodes for d3 to understand and draw
     $scope.createdNodes = newNodes.map(function (node) {
         return {
             'id' : node.id,
-            'title' : node.term_title
+            'title' : node.term_title,
+            'edgeCount' : 0
         }
-    })
+    });
+
+    //counting edges for every node
+    $scope.createdLinks.forEach(function (link) {
+        $scope.createdNodes.forEach(function (node) {
+           if(node.id == link.source){
+               node.edgeCount++;
+           }
+       })
+
+
+    });
+
     $scope.nodeCounts = $scope.createdNodes.length;
     $scope.linkCounts = $scope.createdLinks.length;
 

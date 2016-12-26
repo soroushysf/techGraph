@@ -35,6 +35,7 @@ app.directive('graphView' , function () {
                         .style('background', '#303030')
                         .style('color', 'white')
                         .style('display', 'none')
+                        .style('border-radius', '5px')
                     ;
 
 
@@ -87,7 +88,7 @@ app.directive('graphView' , function () {
                                .style('display', 'block')
 
                             toolTip
-                                .html(d.title)
+                                .html('<h5 class="nodeToolTip">'+d.title+'</h5>'+'<h6 class="nodeToolTipEdges">Node edges : '+d.edgeCount+'</h6>')
                                 .style('left', (d3.event.pageX +20) + 'px')
                                 .style('top', d3.event.pageY + 10+ 'px')
 
