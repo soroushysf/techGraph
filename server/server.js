@@ -4,13 +4,22 @@
 var express = require("express"),
     app = express(),
     bodyParser = require('body-parser'),
-    path = require("path")
+    path = require("path"),
+    OrientDB = require("orientjs"),
+    http = require("http"),
+    request = require("request-promise")
     ;
+
+
+
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-var router = require("./router")(app, path, express, bodyParser);
+var DB = require("./DBAccess");
+
+var router = require("./router")(app, path, express, bodyParser, DB, request);
 
 
 

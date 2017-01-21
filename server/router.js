@@ -3,7 +3,7 @@
  */
 
 
-module.exports = function (app, path, express, bodyParser) {
+module.exports = function (app, path, express, bodyParser, DB, request) {
 
 
     app.use(express.static(path.join(__dirname, '../front')));
@@ -13,11 +13,15 @@ module.exports = function (app, path, express, bodyParser) {
     });
 
     app.post('/queryGraph', function (req, res) {
-        var user_id = req.body.id;
-        var token = req.body.token;
 
-        res.send(user_id + ' this ' + token);
-        console.log(req.body)
+        var queryData = req.body;
+        DB.callingDB(queryData, request).then(function (result) {
+            res.send( result );
+
+        })
+
+
+
     })
 
 
