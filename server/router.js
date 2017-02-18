@@ -3,8 +3,7 @@
  */
 
 
-module.exports = function (app, path, express, bodyParser, DB, request) {
-
+module.exports = function (app, path, express, bodyParser, DB, depNames, request) {
 
     app.use(express.static(path.join(__dirname, '../front')));
 
@@ -16,13 +15,31 @@ module.exports = function (app, path, express, bodyParser, DB, request) {
 
         var queryData = req.body;
         DB.callingDB(queryData, request).then(function (result) {
-            res.send( result );
+            var centerNodeId = JSON.parse(result), finalResult;
+            var dataSend = {
+                nodeTitle : centerNodeId["result"][0]["tech_title"],
+                nodeDependencies : centerNodeId["result"][0]["out"].concat(centerNodeId["result"][0]["in"]).map(function (id) {
+                    return id.replace(/#/g, '');
+                })
+            };
+            depNames.callingDBNames(dataSend, request)
+                .then(function (rs) {
+                    console.log(rs);
+                    finalResult = {
+                        nodeDp : rs,
+                        centerNode : centerNodeId,
+                    }
+                    res.send(finalResult);
 
-        })
+                });
 
 
+        });
 
-    })
+
+    });
+
+
 
 
 }

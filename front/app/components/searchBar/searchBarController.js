@@ -3,9 +3,8 @@
  */
 
 
-app.controller('searchBarCtrl', function ($scope, $http) {
+app.controller('searchBarCtrl', function ($scope, $http, $rootScope) {
     $scope.searchTitle = "Enter your query...";
-
     $scope.sendData = function (field) {
         var dataSent ={
             qry :  JSON.stringify(field.queryInput),
@@ -20,13 +19,14 @@ app.controller('searchBarCtrl', function ($scope, $http) {
             headers : {'Content-Type': 'application/json'}
         })
             .success(function (data, status, headers, config) {
-                $scope.receivedData = data["result"];
-                console.log(data["result"]);
-                // console.log(JSON.parse(data));
+                 $scope.fetchedData = data;
+                 $scope.$emit("fillGraphData", $scope.fetchedData);
             })
             .error(function (data, status, headers, config) {
-                $scope.status = status;
+                console.log(status);
             })
     }
+
+
 
 });

@@ -4,5 +4,3 @@
 
 var app = angular.module("techMiningGraph", ['ngRoute', 'angularUtils.directives.dirPagination']);
 
-
-

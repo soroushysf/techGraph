@@ -28,11 +28,11 @@
                     </th>
                     <th class="dataCenter" >ID
                     </th>
-                    <th class="dataCenter" >results returned
+                    <th class="dataCenter" >type
                     </th>
-                    <th class="dataCenter" >completed
+                    <th class="dataCenter" >version
                     </th>
-                    <th class="dataCenter">fis status
+                    <th class="dataCenter">class
                     </th>
                 </tr>
                 </thead>
@@ -41,9 +41,9 @@
                     <td class="dataCenter" >{{ ($index + 1) + (currentPage - 1) * 10}}</td>
                     <td class="dataCenter">{{node.title}}</td>
                     <td class="dataCenter">{{node.id}}</td>
-                    <td class="dataCenter">{{node.results_returned}}</td>
-                    <td class="dataCenter">{{node.completed}}</td>
-                    <td class="dataCenter">{{node.fis_status}}</td>
+                    <td class="dataCenter">{{node.type}}</td>
+                    <td class="dataCenter">{{node.version}}</td>
+                    <td class="dataCenter">{{node.class}}</td>
                 </tr>
 
                 </tbody>

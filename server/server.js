@@ -17,9 +17,12 @@ var express = require("express"),
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-var DB = require("./DBAccess");
+var DB = require("./DBAccess"),
+    depNames = require("./dependenciesNames")
+    ;
 
-var router = require("./router")(app, path, express, bodyParser, DB, request);
+
+var router = require("./router")(app, path, express, bodyParser, DB, depNames, request);
 
 
 

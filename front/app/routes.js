@@ -7,17 +7,14 @@ app.config(['$routeProvider','$locationProvider' ,function ($routeProvider, $loc
     $locationProvider.html5Mode(false);
     $routeProvider
         .when('/', {
-            templateUrl : 'app/components/graphView/graphView.html',
-            controller : 'graphController'
+            templateUrl : 'app/components/graphView/graphView.html'
 
         })
         .when('/Home', {
-            templateUrl : 'app/components/graphView/graphView.html',
-            controller : 'graphController'
+            templateUrl : 'app/components/graphView/graphView.html'
 
         })
         .when('/graphTable', {
-            templateUrl : 'app/components/GraphTable/graphTable.html',
-            controller : 'graphTableController'
+            templateUrl : 'app/components/GraphTable/graphTable.html'
         })
 }]);

@@ -50,6 +50,11 @@ html, body {
     margin-top: 20px;
     border-color: #496387 !important;
 }
+path.link {
+    fill: none;
+    stroke: #666;
+    stroke-width: 1.5px;
+}
 .graphTable h2 {
     color: #CDC966;
     border-bottom: 3px solid #7186A4;
