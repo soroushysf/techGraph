@@ -10,8 +10,9 @@ app.controller('mainCtrl', function ($scope, $location, $rootScope) {
     $scope.items = menuItems;
     $scope.graphD = {};
 
-    $rootScope.$on("fillGraphData",  function (event,graphData) {
+    $scope.$on("fillGraphData",  function (event,graphData) {
         $scope.$broadcast("graphTableData", graphData);
+        console.log(graphData);
         var i = 0 ,crNodes=[], crLinks=[];
         for(var key in graphData["nodeDp"]){
             if(graphData["nodeDp"].hasOwnProperty(key)){
@@ -35,7 +36,7 @@ app.controller('mainCtrl', function ($scope, $location, $rootScope) {
             crLinks[i] = {
                 'source' : el.replace(/#|:/g, ''),
                 'target' : centerNodeId,
-                'value' : 1/1.5*(Math.random() * (0.3 - 0.141) + 0.2).toFixed(4)
+                'value' : 1/1.5*(Math.random() * (0.3 - 0.1) + 0.2).toFixed(4)
             }
             i++;
         });
@@ -43,7 +44,7 @@ app.controller('mainCtrl', function ($scope, $location, $rootScope) {
             crLinks[i] = {
                 'source' : centerNodeId,
                 'target' : el.replace(/#|:/g, ''),
-                'value' : 1/1.5*(Math.random() * (0.3 - 0.141) + 0.2).toFixed(4)
+                'value' : 1/1.5*(Math.random() * (0.3 - 0.1) + 0.2).toFixed(4)
             }
             i++;
         });
@@ -58,11 +59,35 @@ app.controller('mainCtrl', function ($scope, $location, $rootScope) {
                 }
             }
         }
+        if(graphData["prevNodes"]) {
+            console.log(graphData["prevLinks"]);
+            for(var i = 0 ; i < crLinks.length; i++) {
+               graphData["prevLinks"] = graphData["prevLinks"].filter(function (link) {
+                    if(link["source"] == crLinks[i]["source"] && link["target"] == crLinks[i]["target"])
+                        return false;
+                    else
+                        return true;
+                })
+            }
+            for(var j = 0 ; j < crNodes.length; j++) {
+               graphData["prevNodes"] = graphData["prevNodes"].filter(function (node) {
+                    if(node["title"] == crNodes[j]["title"])
+                        return false;
+                    else
+                        return true;
+                })
+            }
+            crLinks = crLinks.concat(graphData["prevLinks"]);
+            crNodes = crNodes.concat(graphData["prevNodes"]);
+            console.log("links :");
+            console.log(crLinks);
+
+        }
         var completeData = {
             crLinks : crLinks,
             crNodes : crNodes
         }
-        console.log(crLinks);
+
 
         $scope.$broadcast("graphControllerData", completeData);
     });

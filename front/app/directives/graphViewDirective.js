@@ -6,6 +6,11 @@ app.directive('graphView' , function () {
 
     return {
         link : d3Draw,
+        controller : function ($scope) {
+          this.sendNodeData = function (title, nodes, links) {
+              $scope.$emit("dataFromCtrl",[title, nodes, links]);
+          }
+        },
         restrict : 'E',
         scope : {
             d3Nodes : '=',
@@ -14,7 +19,7 @@ app.directive('graphView' , function () {
     };
 
 
-    function d3Draw(scope, element, attr) {
+    function d3Draw(scope, element, attr, ctrl) {
 
 
         scope.$watchGroup(['d3Links', 'd3Nodes'], function (newValues) {
@@ -139,7 +144,8 @@ app.directive('graphView' , function () {
 
             node.on('click', function (d) {
 
-            })
+                ctrl.sendNodeData(d.title, nodes, links);
+            });
 
 
 
