@@ -111,6 +111,8 @@ app.controller('mainCtrl', function ($scope, $location, $rootScope) {
     $scope.changeSate = function (item) {
         $scope.activeItem = item.id;
     }
+    
+
 
 
 

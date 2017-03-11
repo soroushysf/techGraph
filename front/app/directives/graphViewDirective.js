@@ -33,11 +33,11 @@ app.directive('graphView' , function () {
                     .style("background", "white")
                     .attr('class', 'mainSvg')
                 ;
-            var nodes = newValues[1], links = newValues[0]
+            var nodes = newValues[1], links = newValues[0], thLinks = newValues[0]
                 ;
 
 
-            myChart = myChart.call(d3.zoom().on("zoom", zoomed)).append("g");
+            myChart = myChart.call(d3.zoom().on("zoom", zoomed)).on("dblclick.zoom", null).append("g");
 
 
             var color = d3.scaleOrdinal(d3.schemeCategory20);
@@ -108,7 +108,8 @@ app.directive('graphView' , function () {
                         .on("start", dragstarted)
                         .on("drag", dragged)
                         .on("end", dragended)
-                    )
+
+            )
 
                 ;
 
@@ -119,6 +120,7 @@ app.directive('graphView' , function () {
                     return color(i);
                 })
                 .style('cursor', 'pointer')
+
 
 
 
@@ -142,11 +144,13 @@ app.directive('graphView' , function () {
 
             });
 
-            node.on('click', function (d) {
+            node.on('dblclick', function (d) {
 
                 ctrl.sendNodeData(d.title, nodes, links);
             });
 
+
+            node.on('click', connectedNodes) //Added code
 
 
             /*        .on("mouseout", function() {
@@ -154,8 +158,39 @@ app.directive('graphView' , function () {
              .style('display', 'none');
 
              })*/
-
-
+//Toggle stores whether the highlighting is on
+            var toggle = 0;
+//Create an array logging what is connected to what
+            var linkedByIndex = {};
+            for (var i = 0; i < nodes.length; i++) {
+                linkedByIndex[i + "," + i] = 1;
+            };
+            links.forEach(function (d) {
+                linkedByIndex[d.source.index + "," + d.target.index] = 1;
+            });
+//This function looks up whether a pair are neighbours
+            function neighboring(a, b) {
+                return linkedByIndex[a.index + "," + b.index];
+            }
+            function connectedNodes() {
+                if (toggle == 0) {
+                    //Reduce the opacity of all but the neighbouring nodes
+                    var d = d3.select(this).node().__data__;
+                    node.style("opacity", function (o) {
+                        return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
+                    });
+                    link.style("opacity", function (o) {
+                        return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
+                    });
+                    //Reduce the op
+                    toggle = 1;
+                } else {
+                    //Put them back to opacity=1
+                    node.style("opacity", 1);
+                    link.style("opacity", 1);
+                    toggle = 0;
+                }
+            }
 
             function ticked() {
                 link

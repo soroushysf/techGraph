@@ -17,4 +17,5 @@ app.config(['$routeProvider','$locationProvider' ,function ($routeProvider, $loc
         .when('/graphTable', {
             templateUrl : 'app/components/GraphTable/graphTable.html'
         })
+        .otherwise({redirectTo: '/'})
 }]);

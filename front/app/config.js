@@ -13,14 +13,14 @@ var menuItems = [
         title : "Graph Table",
         href : '#/graphTable',
         id : "item2",
-        icon : "fa fa-bar-chart"
+        icon : "icon-table"
 
     },
     {
         title : "Settings",
         href : '/',
         id : "item3",
-        icon : "fa fa-cog"
+        icon : "icon-cog"
 
     }
 ];
