@@ -4,7 +4,7 @@
 
 
 
-app.controller('mainCtrl', function ($scope, $location, $rootScope) {
+app.controller('mainCtrl', function ($scope, $location, d3Node, d3Link) {
 
     $scope.title = "Tech Graph";
     $scope.items = menuItems;
@@ -12,69 +12,40 @@ app.controller('mainCtrl', function ($scope, $location, $rootScope) {
 
     $scope.$on("fillGraphData",  function (event,graphData) {
         $scope.$broadcast("graphTableData", graphData);
-        console.log(graphData);
-        var i = 0 ,crNodes=[], crLinks=[];
-        for(var key in graphData["nodeDp"]){
-            if(graphData["nodeDp"].hasOwnProperty(key)){
-                crNodes[i] = {
-                    'id' : graphData["nodeDp"][key][0]["@rid"].replace(/#|:/g,''),
-                    'title' : graphData["nodeDp"][key][0]["tech_title"],
-                    'edgeCount' : 0
-                }
-            i++;
-            }
-        }
-        i=0;
-        var centerNodeId = graphData["centerNode"]["result"][0]["@rid"].replace(/#|:/g,'');
+        var crNodes=[], crLinks=[],centerNodeId;
+
+
+
+
+        crNodes = d3Node.createNode(graphData["nodeDp"]);
+        
+
+        centerNodeId = graphData["centerNode"]["result"][0]["@rid"].replace(/#|:/g,'');
+
         crNodes.push({
             'id' : centerNodeId,
             'title' : graphData["centerNode"]["result"][0]["tech_title"],
-            'edgeCount' : 0,
-            'color' : 0
-        });
-        graphData["centerNode"]["result"][0]["in"].forEach(function (el) {
-            crLinks[i] = {
-                'source' : el.replace(/#|:/g, ''),
-                'target' : centerNodeId,
-                'value' : 1/1.5*(Math.random() * (0.3 - 0.1) + 0.2).toFixed(4)
-            }
-            i++;
-        });
-        graphData["centerNode"]["result"][0]["out"].forEach(function (el) {
-            crLinks[i] = {
-                'source' : centerNodeId,
-                'target' : el.replace(/#|:/g, ''),
-                'value' : 1/1.5*(Math.random() * (0.3 - 0.1) + 0.2).toFixed(4)
-            }
-            i++;
+            'edgeCount' : 0
         });
 
-        for(var i = 0;  i < crLinks.length; i++) {
-            for(var j = 0;j < crNodes.length; j++) {
-                if(crLinks[i]['source'] == crNodes[j]['id']){
-                    crNodes[j]['color'] = 12;
-                }
-                else {
-                    crNodes[j]['color'] = 5;
-                }
-            }
-        }
+        crLinks = d3Link.linkDependencies(graphData["centerNode"]["result"][0]["in"], centerNodeId, "in");
+
+        crLinks = crLinks.concat(crLinks, d3Link.linkDependencies(graphData["centerNode"]["result"][0]["out"], centerNodeId, "out"));
+
+
+
+        //filters out repeated nodes and links
+
         if(graphData["prevNodes"]) {
             console.log(graphData["prevLinks"]);
             for(var i = 0 ; i < crLinks.length; i++) {
                graphData["prevLinks"] = graphData["prevLinks"].filter(function (link) {
-                    if(link["source"] == crLinks[i]["source"] && link["target"] == crLinks[i]["target"])
-                        return false;
-                    else
-                        return true;
+                    return !(link["source"] == crLinks[i]["source"] && link["target"] == crLinks[i]["target"]);
                 })
             }
             for(var j = 0 ; j < crNodes.length; j++) {
                graphData["prevNodes"] = graphData["prevNodes"].filter(function (node) {
-                    if(node["title"] == crNodes[j]["title"])
-                        return false;
-                    else
-                        return true;
+                    return !(node["title"] == crNodes[j]["title"]);
                 })
             }
             crLinks = crLinks.concat(graphData["prevLinks"]);
@@ -83,10 +54,12 @@ app.controller('mainCtrl', function ($scope, $location, $rootScope) {
             console.log(crLinks);
 
         }
+        // ----------------------------------------
+
         var completeData = {
             crLinks : crLinks,
             crNodes : crNodes
-        }
+        };
 
 
         $scope.$broadcast("graphControllerData", completeData);
@@ -110,13 +83,14 @@ app.controller('mainCtrl', function ($scope, $location, $rootScope) {
 
     $scope.changeSate = function (item) {
         $scope.activeItem = item.id;
-    }
+    };
     
 
 
 
+    var container = $(".container-fluid");
 
-    $(".leftMenu").height($(".container-fluid").height());
-    $(".mainSection").height($(".container-fluid").height());
+    $(".leftMenu").height(container.height());
+    $(".mainSection").height(container.height());
 });
 

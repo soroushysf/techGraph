@@ -2,74 +2,57 @@
  * Created by soroush on 12/11/16.
  */
 
-app.controller('graphController', function ($scope, $rootScope, $http) {
+app.controller('graphController', function ($scope, $rootScope, searchModel, d3Node, d3Link) {
 
-
+    var graphCtrl = this;
     $scope.graphViewTitle = "Graph View";
 
-    $scope.$on("dataFromCtrl",function (event ,x) {
-        var dataSent ={
-                qry :  JSON.stringify(x[0]),
+
+    // declared in graph directive (graphData => 0: titles, 1: nodes, 2: links)
+    $scope.$on("dataFromCtrl",function (event ,graphData) {
+        var sendingData ={
+                qry :  JSON.stringify(graphData[0]),
                 limit : 1
-            }
-            ;
-        $http({
-            url : 'http://localhost:3000/queryGraph',
-            method : 'POST',
-            data : dataSent,
-            headers : {'Content-Type': 'application/json'}
-        })
+            };
+
+        searchModel.getGraphNode(sendingData)
+
             .success(function (data, status, headers, config) {
-                $scope.fetchedData = data;
-                x[1] = x[1].map(function (el) {
-                    return {
-                        'id' : el.id,
-                        'title' : el.title,
-                        'edgeCount' : el.edgeCount
-                    }
-                });
-                x[2] = x[2].map(function (el) {
-                    return {
-                        'source' : el.source["id"],
-                        'target' : el.target["id"],
-                        'value' : el.value
-                    }
-                });
-                $scope.fetchedData["prevNodes"] = x[1];
-                $scope.fetchedData["prevLinks"] = x[2];
-                $scope.$emit("fillGraphData", $scope.fetchedData);
+
+                var successData = this;
+                successData.fetchedData = data;
+
+                //filtering data to draw the new graph
+
+
+                graphData[1] = d3Node.createNode(graphData[1]);
+
+                graphData[2] = d3Link.createLink(graphData[2]);
+
+                //------filtering ended---------//
+                successData.fetchedData["prevNodes"] = graphData[1];
+                successData.fetchedData["prevLinks"] = graphData[2];
+
+                $scope.$emit("fillGraphData", successData.fetchedData);
             })
+
             .error(function (data, status, headers, config) {
                 console.log(status);
             })
     });
+
     //creating links for d3 to understand and draw
 
-    $scope.createdLinksTemp = newLinks.map(function (link) {
-            return {
-                'source': link.term_id1,
-                'target': link.term_id2,
-                'value': Number(link["weighted_similarity"])
-            }
+    graphCtrl.createdLinks = d3Link.createLink(newLinks);
 
-    });
-    $scope.createdLinks = $scope.createdLinksTemp.filter(function (link) {
-        if(link.value > 0.14)
-            return true;
-        else
-            return false;
-    })
+    graphCtrl.createdLinks = d3Link.filterValue(graphCtrl.createdLinks);
 
     //creating nodes for d3 to understand and draw
-    $scope.createdNodes = newNodes.map(function (node) {
-        return {
-            'id' : node.id,
-            'title' : node.term_title,
-            'edgeCount' : 0
-        }
-    });
-    $scope.createdLinks.forEach(function (link) {
-        $scope.createdNodes.forEach(function (node) {
+    graphCtrl.createdNodes = d3Node.createNode(newNodes);
+
+
+    graphCtrl.createdLinks.forEach(function (link) {
+        graphCtrl.createdNodes.forEach(function (node) {
             if(node.id == link.source){
                 node.edgeCount++;
             }
@@ -77,14 +60,21 @@ app.controller('graphController', function ($scope, $rootScope, $http) {
 
 
     });
-    $scope.nodeCounts = $scope.createdNodes.length;
-    $scope.linkCounts = $scope.createdLinks.length;
-    
+
+    $scope.createdLinks =  graphCtrl.createdLinks;
+    $scope.createdNodes = graphCtrl.createdNodes;
+
+    $scope.nodeCounts = graphCtrl.createdNodes.length;
+    $scope.linkCounts = graphCtrl.createdLinks.length;
+
+
+    //gets this event from main controller
     $scope.$on("graphControllerData", function (event, data) {
 
 
         $scope.createdLinks = data["crLinks"];
         $scope.createdNodes = data["crNodes"];
+
             $scope.createdLinks.forEach(function (link) {
                 $scope.createdNodes.forEach(function (node) {
                     if (node.id == link.source || node.id == link.target) {

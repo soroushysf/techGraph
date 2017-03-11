@@ -3,7 +3,7 @@
  */
 
 
-module.exports = function (app, path, express, bodyParser, DB, depNames, request) {
+module.exports = function (app, path, express, bodyParser, DB, depNames, request, Promise) {
 
     app.use(express.static(path.join(__dirname, '../front')));
 
@@ -22,9 +22,8 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, request
                     return id.replace(/#/g, '');
                 })
             };
-            depNames.callingDBNames(dataSend, request)
+            depNames.callingDBNames(dataSend, request, Promise)
                 .then(function (rs) {
-                    console.log(rs);
                     finalResult = {
                         nodeDp : rs,
                         centerNode : centerNodeId,

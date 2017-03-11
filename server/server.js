@@ -7,7 +7,8 @@ var express = require("express"),
     path = require("path"),
     OrientDB = require("orientjs"),
     http = require("http"),
-    request = require("request-promise")
+    request = require("request-promise"),
+    Promise = require("bluebird")
     ;
 
 
@@ -22,7 +23,7 @@ var DB = require("./DBAccess"),
     ;
 
 
-var router = require("./router")(app, path, express, bodyParser, DB, depNames, request);
+var router = require("./router")(app, path, express, bodyParser, DB, depNames, request, Promise);
 
 
 

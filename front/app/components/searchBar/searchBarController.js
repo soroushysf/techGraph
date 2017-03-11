@@ -3,28 +3,31 @@
  */
 
 
-app.controller('searchBarCtrl', function ($scope, $http, $rootScope) {
+app.controller('searchBarCtrl', function ($scope, searchModel) {
+
     $scope.searchTitle = "Enter your query...";
+
     $scope.sendData = function (field) {
-        var dataSent ={
+        var sendingData ={
             qry :  JSON.stringify(field.queryInput),
             limit : field.queryLimit
             }
             ;
-        console.log("clicked");
-        $http({
-            url : 'http://localhost:3000/queryGraph',
-            method : 'POST',
-            data : dataSent,
-            headers : {'Content-Type': 'application/json'}
-        })
+
+
+        searchModel.getGraphNode(sendingData)
+
             .success(function (data, status, headers, config) {
-                 $scope.fetchedData = data;
-                 $scope.$emit("fillGraphData", $scope.fetchedData);
+
+                console.log(data);
+                $scope.$emit("fillGraphData", data);
+
             })
             .error(function (data, status, headers, config) {
                 console.log(status);
-            })
+            });
+
+
     }
 
 

@@ -3,37 +3,39 @@
  */
 
 
-function callingDBNames(queryData, request) {
+function callingDBNames(queryData, request, Promise) {
 
-console.log(queryData);
 
-        var options = {
-            url:  'http://localhost:8060/orient',
-            method: 'POST',
+    var databaseRequests = [], options;
+
+
+    for(var i = 0; i < queryData["nodeDependencies"].length; i++) {
+        options = {
+            url:  encodeURI('http://localhost:2480/query/tech_graph/sql/select out(),in(), * from techs where @rid ='+queryData["nodeDependencies"][i]),
+            method: 'GET',
             headers: {
-                'Accept': 'application/json',
-                'cache-control': 'no-cache'
-            },
-            body : {
-              input : queryData["nodeDependencies"]
+                'Accept': 'application/json'
             },
             auth: {
                 username: 'root',
                 password: 'root'
-            },
-            json:true
-
+            }
         };
 
+        databaseRequests.push(
+            request(options, function (err, res, body) {
+                return body;
+            })
+        );
+    }
+     return Promise.all(databaseRequests)
+         .then(function (data) {
 
-       return request(options, function (err, res, body) {
-            return body;
-        });
+            return data.map(function (el) {
+                return JSON.parse(el);
+            });
 
-
-
-
-
+         });
 
 
 
