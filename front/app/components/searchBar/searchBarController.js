@@ -6,6 +6,7 @@
 app.controller('searchBarCtrl', function ($scope, searchModel) {
 
     $scope.searchTitle = "Enter your query...";
+    $scope.spinner = false;
 
     $scope.sendData = function (field) {
         var sendingData ={
@@ -13,12 +14,12 @@ app.controller('searchBarCtrl', function ($scope, searchModel) {
             limit : field.queryLimit
             }
             ;
-
+        $scope.spinner = true;
 
         searchModel.getGraphNode(sendingData)
 
             .success(function (data, status, headers, config) {
-
+                $scope.spinner = false;
                 console.log(data);
                 $scope.$emit("fillGraphData", data);
 

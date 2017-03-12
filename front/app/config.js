@@ -7,20 +7,20 @@ var menuItems = [
         title : "Home",
         href : '#/Home',
         id : "item1",
-        icon : "icon-home"
+        icon : "fa fa-home"
     },
     {
         title : "Graph Table",
         href : '#/graphTable',
         id : "item2",
-        icon : "icon-table"
+        icon : "fa fa-table"
 
     },
     {
         title : "Settings",
         href : '/',
         id : "item3",
-        icon : "icon-cog"
+        icon : "fa fa-cogs"
 
     }
 ];
