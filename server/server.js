@@ -19,11 +19,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 var DB = require("./DBAccess"),
-    depNames = require("./dependenciesNames")
+    depNames = require("./dependenciesNames"),
+    depLinks = require("./dependenciesLinks")
+
     ;
 
 
-var router = require("./router")(app, path, express, bodyParser, DB, depNames, request, Promise);
+var router = require("./router")(app, path, express, bodyParser, DB, depNames, depLinks , request, Promise);
 
 
 

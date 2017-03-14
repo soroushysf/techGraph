@@ -27,7 +27,7 @@ app.controller('graphController', function ($scope, $rootScope, searchModel, d3N
 
                 graphData[1] = d3Node.createNode(graphData[1]);
 
-                graphData[2] = d3Link.createLink(graphData[2]);
+                graphData[2] = d3Link.filterValue(d3Link.createLinkDoubleCLick(graphData[2]));
 
                 //------filtering ended---------//
                 successData.fetchedData["prevNodes"] = graphData[1];
@@ -62,7 +62,8 @@ app.controller('graphController', function ($scope, $rootScope, searchModel, d3N
     });
 
     $scope.createdLinks =  graphCtrl.createdLinks;
-    $scope.createdNodes = graphCtrl.createdNodes;
+    console.log(d3Node.filterNodes(graphCtrl.createdNodes, graphCtrl.createdLinks));
+    $scope.createdNodes = d3Node.filterNodes(graphCtrl.createdNodes, graphCtrl.createdLinks);
 
     $scope.nodeCounts = graphCtrl.createdNodes.length;
     $scope.linkCounts = graphCtrl.createdLinks.length;
@@ -73,7 +74,7 @@ app.controller('graphController', function ($scope, $rootScope, searchModel, d3N
 
 
         $scope.createdLinks = data["crLinks"];
-        $scope.createdNodes = data["crNodes"];
+        $scope.createdNodes = d3Node.filterNodes(data["crNodes"], data["crLinks"]);
 
             $scope.createdLinks.forEach(function (link) {
                 $scope.createdNodes.forEach(function (node) {
@@ -87,6 +88,6 @@ app.controller('graphController', function ($scope, $rootScope, searchModel, d3N
         $scope.linkCounts = $scope.createdLinks.length;
     });
 
-    $(".graphView").height(($(".container-fluid").height())*0.7);
+    $(".graphView").height(($(".container-fluid").height())*0.87);
 
 });

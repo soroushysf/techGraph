@@ -9,17 +9,28 @@ app.service('d3Link', function () {
 
         return linkData.map(function (link) {
             return {
-                'source' :  link.term_id1 || link.source["id"] ,
-                'target' :  link.term_id2 || link.target["id"] ,
-                'value' : Number(link["weighted_similarity"]) || link.value
+                'source' :  link.term_id1 ||  link["out"].replace(/#|:/g, '')  ,
+                'target' :  link.term_id2 ||  link["in"].replace(/#|:/g, '') ,
+                'value' : Number(link["weighted_similarity"]) || link["weight"]
             };
         });
 
-    }
+    };
 
+    d3Link.createLinkDoubleCLick = function (linkData) {
+
+        return linkData.map(function (link) {
+            return {
+                'source' :    link.source["id"]  ,
+                'target' :   link.target["id"] ,
+                'value' :  link["value"]
+            };
+        });
+
+    };
     d3Link.filterValue = function (linkData) {
         return linkData.filter(function (link) {
-            return (link.value > 0.14);
+            return (link.value > 0.2);
         });
     }
 
@@ -27,7 +38,6 @@ app.service('d3Link', function () {
         var newLinks = [], i = 0;
 
         if (direction === "in") {
-            console.log("1");
             linkData.forEach(function (el) {
                 newLinks[i] = {
                     'source': el.replace(/#|:/g, ''),
@@ -38,7 +48,6 @@ app.service('d3Link', function () {
             });
         }
         else {
-            console.log("2");
             linkData.forEach(function (el) {
                 newLinks[i] = {
                     'source': centerNodeId,

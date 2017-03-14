@@ -6,11 +6,11 @@
 function callingDBNames(queryData, request, Promise) {
 
 
-    var databaseRequests = [], options;
-
+    var databaseRequests = [], optionsNode;
+    console.log(queryData);
 
     for(var i = 0; i < queryData["nodeDependencies"].length; i++) {
-        options = {
+        optionsNode = {
             url:  encodeURI('http://localhost:2480/query/tech_graph/sql/select out(),in(), * from techs where @rid ='+queryData["nodeDependencies"][i]),
             method: 'GET',
             headers: {
@@ -23,12 +23,12 @@ function callingDBNames(queryData, request, Promise) {
         };
 
         databaseRequests.push(
-            request(options, function (err, res, body) {
+            request(optionsNode, function (err, res, body) {
                 return body;
             })
         );
     }
-     return Promise.all(databaseRequests)
+      return Promise.all(databaseRequests)
          .then(function (data) {
 
             return data.map(function (el) {
@@ -36,7 +36,6 @@ function callingDBNames(queryData, request, Promise) {
             });
 
          });
-
 
 
 }

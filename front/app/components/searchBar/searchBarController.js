@@ -20,7 +20,6 @@ app.controller('searchBarCtrl', function ($scope, searchModel) {
 
             .success(function (data, status, headers, config) {
                 $scope.spinner = false;
-                console.log(data);
                 $scope.$emit("fillGraphData", data);
 
             })

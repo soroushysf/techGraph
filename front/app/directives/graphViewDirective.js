@@ -7,9 +7,9 @@ app.directive('graphView' , function () {
     return {
         link : d3Draw,
         controller : function ($scope) {
-          this.sendNodeData = function (title, nodes, links) {
-              $scope.$emit("dataFromCtrl",[title, nodes, links]);
-          }
+            this.sendNodeData = function (title, nodes, links) {
+                $scope.$emit("dataFromCtrl",[title, nodes, links]);
+            }
         },
         restrict : 'E',
         scope : {
@@ -40,7 +40,7 @@ app.directive('graphView' , function () {
             myChart = myChart.call(d3.zoom().on("zoom", zoomed)).on("dblclick.zoom", null).append("g");
 
 
-            var color = d3.scaleOrdinal(d3.schemeCategory20);
+            var color = d3.scaleOrdinal(d3.schemeCategory10);
             /*            var toolTip = d3.select('body').append('div')
              .style('position', 'absolute')
              .style('padding', '5px 10px')
@@ -52,18 +52,20 @@ app.directive('graphView' , function () {
 
 
 
-            myChart.append("svg:defs").selectAll("marker")
+            myChart
+                .append("svg:defs").selectAll("marker")
                 .data(["end"])      // Different link/path types can be defined here
                 .enter().append("svg:marker")    // This section adds in the arrows
                 .attr("id", String)
                 .attr("viewBox", "0 -5 10 10")
-                .attr("refX", 100)
+                .attr("refX", 90)
                 .attr("refY", 0)
-                .attr("markerWidth", 26)
-                .attr("markerHeight", 36)
+                .attr("markerWidth", 45)
+                .attr("markerHeight", 50)
                 .attr("orient", "auto")
                 .append("svg:path")
                 .attr("d", "M0,-5L10,0L0,5");
+
 
 
             var simulation = d3.forceSimulation(nodes)
@@ -94,7 +96,7 @@ app.directive('graphView' , function () {
                 .attr("stroke", "#333")
 
                 .style("stroke-width", function(d) {
-                    return d.value ;
+                    return 1/(d.value * 30 ) ;
                 })
                 .attr("marker-end", "url(#end)");
 
@@ -104,31 +106,44 @@ app.directive('graphView' , function () {
             var node = myChart.selectAll("g")
                     .data(nodes)
                     .enter().append("g")
+                    .attr("class", function(d) {
+                        return d["icon"];
+                    })
                     .call(d3.drag()
                         .on("start", dragstarted)
                         .on("drag", dragged)
                         .on("end", dragended)
 
-            )
+                    )
 
                 ;
 
+            d3.selectAll(".person")
+                .append('text')
+                .attr('font-family', 'FontAwesome')
+                .text(function() { return '\uf2c0' })
+                .style('cursor', 'pointer');
 
-            node.append("circle")
+
+            d3.selectAll(".tech")
+                .append("circle")
                 .attr("r", 10)
                 .attr("fill", function (d, i) {
-                    return color(i);
+                    if (!(d["cluster"]))
+                        return color(i);
+                    else
+                        return color(d["cluster"]);
                 })
-                .style('cursor', 'pointer')
+                .style('cursor', 'pointer');
 
 
 
 
 
             node.append("text")
-                .attr("dx", 12)
-                .attr("dy", ".35em")
-                .text(function(d) { return d.title })
+                .attr("dx", 27)
+                .attr("dy", ".25em")
+                .text(function(d) { return d.title });
 
 
             node.on('mouseover', function (d) {
@@ -150,7 +165,7 @@ app.directive('graphView' , function () {
             });
 
 
-            node.on('click', connectedNodes) //Added code
+            node.on('click', connectedNodes); //Added code
 
 
             /*        .on("mouseout", function() {
@@ -164,10 +179,12 @@ app.directive('graphView' , function () {
             var linkedByIndex = {};
             for (var i = 0; i < nodes.length; i++) {
                 linkedByIndex[i + "," + i] = 1;
-            };
+            }
+
             links.forEach(function (d) {
                 linkedByIndex[d.source.index + "," + d.target.index] = 1;
             });
+
 //This function looks up whether a pair are neighbours
             function neighboring(a, b) {
                 return linkedByIndex[a.index + "," + b.index];
@@ -182,12 +199,28 @@ app.directive('graphView' , function () {
                     link.style("opacity", function (o) {
                         return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
                     });
+                    d3.select(this).select("circle")
+                        .transition("200")
+                        .attr("r", 25)
+                    ;
+                    d3.select(this).selectAll("text")
+                        .transition("200")
+                        .style("font-size", 34+"px")
+                    ;
                     //Reduce the op
                     toggle = 1;
                 } else {
                     //Put them back to opacity=1
                     node.style("opacity", 1);
                     link.style("opacity", 1);
+                    d3.selectAll("circle")
+                        .transition("200")
+                        .attr("r", 10)
+                    ;
+                    d3.selectAll("text")
+                        .transition("200")
+                        .style("font-size", 19+"px")
+                    ;
                     toggle = 0;
                 }
             }
@@ -209,7 +242,9 @@ app.directive('graphView' , function () {
 
 
 
-                node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+                node.attr("transform", function(d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
                 /*                node
                  .attr("cx", function (d) {
                  return d.x;
