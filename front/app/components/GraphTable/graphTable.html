@@ -28,12 +28,11 @@
                     </th>
                     <th class="dataCenter" >ID
                     </th>
-                    <th class="dataCenter" >type
+                    <th class="dataCenter" >Cluster
                     </th>
-                    <th class="dataCenter" >version
+                    <th class="dataCenter" >Type
                     </th>
-                    <th class="dataCenter">class
-                    </th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -41,9 +40,8 @@
                     <td class="dataCenter" >{{ ($index + 1) + (currentPage - 1) * 10}}</td>
                     <td class="dataCenter">{{node.title}}</td>
                     <td class="dataCenter">{{node.id}}</td>
-                    <td class="dataCenter">{{node.type}}</td>
-                    <td class="dataCenter">{{node.version}}</td>
-                    <td class="dataCenter">{{node.class}}</td>
+                    <td class="dataCenter">{{node.cluster}}</td>
+                    <td class="dataCenter">{{node.icon}}</td>
                 </tr>
 
                 </tbody>
