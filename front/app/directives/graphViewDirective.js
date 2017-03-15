@@ -10,6 +10,9 @@ app.directive('graphView' , function () {
             this.sendNodeData = function (title, nodes, links) {
                 $scope.$emit("dataFromCtrl",[title, nodes, links]);
             }
+            $scope.$on("weightToggle", function () {
+                $scope.weightToggleD3();
+            })
         },
         restrict : 'E',
         scope : {
@@ -40,7 +43,9 @@ app.directive('graphView' , function () {
             myChart = myChart.call(d3.zoom().on("zoom", zoomed)).on("dblclick.zoom", null).append("g");
 
 
-            var color = d3.scaleOrdinal(d3.schemeCategory10);
+            var color = d3.scaleOrdinal(d3.schemeCategory10),
+                linkText
+                ;
             /*            var toolTip = d3.select('body').append('div')
              .style('position', 'absolute')
              .style('padding', '5px 10px')
@@ -51,17 +56,16 @@ app.directive('graphView' , function () {
              ;*/
 
 
-
             myChart
                 .append("svg:defs").selectAll("marker")
                 .data(["end"])      // Different link/path types can be defined here
                 .enter().append("svg:marker")    // This section adds in the arrows
                 .attr("id", String)
                 .attr("viewBox", "0 -5 10 10")
-                .attr("refX", 90)
+                .attr("refX", 120+"px")
                 .attr("refY", 0)
-                .attr("markerWidth", 45)
-                .attr("markerHeight", 50)
+                .attr("markerWidth", 85)
+                .attr("markerHeight", 80)
                 .attr("orient", "auto")
                 .append("svg:path")
                 .attr("d", "M0,-5L10,0L0,5");
@@ -199,11 +203,14 @@ app.directive('graphView' , function () {
                     link.style("opacity", function (o) {
                         return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
                     });
+                    linkText.style("opacity", function (o) {
+                        return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
+                    })
                     d3.select(this).select("circle")
                         .transition("200")
                         .attr("r", 25)
                     ;
-                    d3.select(this).selectAll("text")
+                    d3.select(this).selectAll(".text")
                         .transition("200")
                         .style("font-size", 34+"px")
                     ;
@@ -213,17 +220,39 @@ app.directive('graphView' , function () {
                     //Put them back to opacity=1
                     node.style("opacity", 1);
                     link.style("opacity", 1);
+                    linkText.style("opacity", 1);
                     d3.selectAll("circle")
                         .transition("200")
                         .attr("r", 10)
                     ;
-                    d3.selectAll("text")
+                    d3.select(this).selectAll("text")
                         .transition("200")
                         .style("font-size", 19+"px")
                     ;
                     toggle = 0;
                 }
             }
+
+
+            // Append text to Link edges
+            linkText = myChart.selectAll(".Link")
+                .data(links)
+                .enter()
+                .append("text")
+                .attr("class", "weight")
+                .classed("displayWeight", true)
+                .attr("font-family", "Arial, Helvetica, sans-serif")
+                .attr("fill", "Black")
+                .style("font", "normal 12px Arial")
+                .attr("dy", ".35em")
+                .text(function (d) {
+                    return d.value;
+                });
+
+            scope.weightToggleD3 = function() {
+                linkText.classed("displayWeight", !linkText.classed("displayWeight"));
+            };
+
 
             function ticked() {
                 link
@@ -252,6 +281,21 @@ app.directive('graphView' , function () {
                  .attr("cy", function (d) {
                  return d.y;
                  });*/
+
+
+                linkText
+                    .attr("x", function(d) {
+                        if (d.target.x > d.source.x) {
+                            return (d.source.x + (d.target.x - d.source.x)/2); }
+                        else {
+                            return (d.target.x + (d.source.x - d.target.x)/2); }
+                    })
+                    .attr("y", function(d) {
+                        if (d.target.y > d.source.y) {
+                            return (d.source.y + (d.target.y - d.source.y)/2); }
+                        else {
+                            return (d.target.y + (d.source.y - d.target.y)/2); }
+                    })
 
             }
 

@@ -4,5 +4,12 @@
 
 $(document).ready(function () {
 
-
+    // $('#weightBtn').on('click', function () {
+    //
+    // });
+    //
+    // $('.btnSearchInput').on('click', function () {
+    //
+    //
+    // });
 });

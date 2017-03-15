@@ -8,12 +8,20 @@
 
     </div>
     <div>
-    <span class="graphData">Nodes : {{nodeCounts}} </span>
-    <span class="graphData"> Edges : {{linkCounts}}</span>
-    </div>
-    <div class="marginTop10">
+        <span class="graphData">Nodes : {{nodeCounts}} </span>
+        <span class="graphData"> Edges : {{linkCounts}}</span>
         <span class="graphData">Current Node Name :  </span>
         <span id="nodeName" class="graphData"></span>
+    </div>
+    <div class="marginTop10">
+
+        <span class="graphData">show weights :</span>
+
+        <button type="button" id="weightBtn" class="btn btn-default" data-toggle="button" aria-pressed="true" autocomplete="off" ng-click="weightToggle()">
+            Off
+        </button>
+
+
     </div>
 </div>
 

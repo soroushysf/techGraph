@@ -20,12 +20,13 @@ app.use(bodyParser.json());
 
 var DB = require("./DBAccess"),
     depNames = require("./dependenciesNames"),
-    depLinks = require("./dependenciesLinks")
+    depLinks = require("./dependenciesLinks"),
+    traverseDB = require("./traverseGraph")
 
     ;
 
 
-var router = require("./router")(app, path, express, bodyParser, DB, depNames, depLinks , request, Promise);
+var router = require("./router")(app, path, express, bodyParser, DB, depNames, depLinks , traverseDB, request, Promise);
 
 
 

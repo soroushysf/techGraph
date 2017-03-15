@@ -1,13 +1,13 @@
 /**
- * Created by soroush on 3/13/17.
+ * Created by soroush on 3/15/17.
  */
 
-function callingDBLinks(queryData, request) {
+
+function callingDBTraverse(queryData, request) {
 
     var optionsLink;
-
     optionsLink = {
-        url:  encodeURI('http://localhost:2480/query/tech_graph/sql/select from associations where in = '+queryData+' or out = '+queryData+'/1000'),
+        url:  encodeURI('http://localhost:2480/query/tech_graph/sql/traverse * from '+queryData+' while $depth <= 1'),
         method: 'GET',
         headers: {
             'Accept': 'application/json'
@@ -24,5 +24,5 @@ function callingDBLinks(queryData, request) {
 }
 
 module.exports = {
-    callingDBLinks : callingDBLinks
+    callingDBTraverse : callingDBTraverse
 };

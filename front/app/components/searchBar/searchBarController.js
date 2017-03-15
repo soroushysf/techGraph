@@ -27,7 +27,8 @@ app.controller('searchBarCtrl', function ($scope, searchModel) {
                 console.log(status);
             });
 
-
+        $('#weightBtn').removeClass('btn-success').addClass('btn-default');
+        $('#weightBtn').html('Off');
     }
 
 

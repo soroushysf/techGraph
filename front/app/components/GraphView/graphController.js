@@ -11,9 +11,9 @@ app.controller('graphController', function ($scope, $rootScope, searchModel, d3N
     // declared in graph directive (graphData => 0: titles, 1: nodes, 2: links)
     $scope.$on("dataFromCtrl",function (event ,graphData) {
         var sendingData ={
-                qry :  JSON.stringify(graphData[0]),
-                limit : 1
-            };
+            qry :  JSON.stringify(graphData[0]),
+            limit : 1
+        };
 
         searchModel.getGraphNode(sendingData)
 
@@ -73,20 +73,36 @@ app.controller('graphController', function ($scope, $rootScope, searchModel, d3N
     $scope.$on("graphControllerData", function (event, data) {
 
 
+        $('#weightBtn').removeClass('btn-success').addClass('btn-default');
+        $('#weightBtn').html('Off');
+
+
         $scope.createdLinks = data["crLinks"];
         $scope.createdNodes = d3Node.filterNodes(data["crNodes"], data["crLinks"]);
 
-            $scope.createdLinks.forEach(function (link) {
-                $scope.createdNodes.forEach(function (node) {
-                    if (node.id == link.source || node.id == link.target) {
-                        node.edgeCount++;
-                    }
-                })
-            });
+        $scope.createdLinks.forEach(function (link) {
+            $scope.createdNodes.forEach(function (node) {
+                if (node.id == link.source || node.id == link.target) {
+                    node.edgeCount++;
+                }
+            })
+        });
 
         $scope.nodeCounts = $scope.createdNodes.length;
         $scope.linkCounts = $scope.createdLinks.length;
     });
+
+
+    $scope.weightToggle = function () {
+        $('#weightBtn').toggleClass('btn-default').toggleClass('btn-success');
+
+        if($('#weightBtn').hasClass('btn-success')){
+            $('#weightBtn').html('On');
+        } else {
+            $('#weightBtn').html('Off')
+        }
+        $scope.$broadcast("weightToggle");
+    };
 
     $(".graphView").height(($(".container-fluid").height())*0.87);
 
