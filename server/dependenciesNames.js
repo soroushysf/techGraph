@@ -7,7 +7,6 @@ function callingDBNames(queryData, request, Promise) {
 
 
     var databaseRequests = [], optionsNode;
-    console.log(queryData);
 
     for(var i = 0; i < queryData["nodeDependencies"].length; i++) {
         optionsNode = {

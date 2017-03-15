@@ -36,7 +36,7 @@ app.directive('graphView' , function () {
                     .style("background", "white")
                     .attr('class', 'mainSvg')
                 ;
-            var nodes = newValues[1], links = newValues[0], thLinks = newValues[0]
+            var nodes = newValues[1], links = newValues[0]
                 ;
 
 
@@ -210,7 +210,7 @@ app.directive('graphView' , function () {
                         .transition("200")
                         .attr("r", 25)
                     ;
-                    d3.select(this).selectAll(".text")
+                    d3.select(this).selectAll("text")
                         .transition("200")
                         .style("font-size", 34+"px")
                     ;

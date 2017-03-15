@@ -7,7 +7,7 @@ function callingDBTraverse(queryData, request) {
 
     var optionsLink;
     optionsLink = {
-        url:  encodeURI('http://localhost:2480/query/tech_graph/sql/traverse * from '+queryData+' while $depth <= 1'),
+        url:  encodeURI('http://localhost:2480/query/tech_graph/sql/traverse * from '+queryData+' while $depth <= 1/1000'),
         method: 'GET',
         headers: {
             'Accept': 'application/json'

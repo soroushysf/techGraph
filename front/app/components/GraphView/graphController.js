@@ -2,7 +2,7 @@
  * Created by soroush on 12/11/16.
  */
 
-app.controller('graphController', function ($scope, $rootScope, searchModel, d3Node, d3Link) {
+app.controller('graphController', function ($scope, searchModel, traverseModel, d3Node, d3Link) {
 
     var graphCtrl = this;
     $scope.graphViewTitle = "Graph View";
@@ -36,37 +36,45 @@ app.controller('graphController', function ($scope, $rootScope, searchModel, d3N
                 $scope.$emit("fillGraphData", successData.fetchedData);
             })
 
-            .error(function (data, status, headers, config) {
+            .catch(function (data, status, headers, config) {
                 console.log(status);
             })
     });
 
-    //creating links for d3 to understand and draw
 
-    graphCtrl.createdLinks = d3Link.createLink(newLinks);
+    graphCtrl.firstData = {
+        "req" : "[23:11, 23:9, 24:15, 24:14]"
+    };
 
-    graphCtrl.createdLinks = d3Link.filterValue(graphCtrl.createdLinks);
+    traverseModel.getGraphNode(graphCtrl.firstData)
+        .success(function (result) {
+            graphCtrl.firstNodes = d3Node.createTraverseNode(result["techs"]);
+            graphCtrl.firstLinks = d3Link.createLink(result["associations"]);
+            graphCtrl.firstLinks = d3Link.filterLink(graphCtrl.firstLinks, graphCtrl.firstNodes);
 
-    //creating nodes for d3 to understand and draw
-    graphCtrl.createdNodes = d3Node.createNode(newNodes);
 
-
-    graphCtrl.createdLinks.forEach(function (link) {
-        graphCtrl.createdNodes.forEach(function (node) {
-            if(node.id == link.source){
-                node.edgeCount++;
-            }
+            $scope.createdLinks =  graphCtrl.firstLinks;
+            $scope.createdNodes = graphCtrl.firstNodes;
+            $scope.nodeCounts = graphCtrl.firstNodes.length;
+            $scope.linkCounts = graphCtrl.firstLinks.length;
         })
+        .catch(function (err, status) {
+            console.log(status);
+        });
 
+    $scope.createdLinks =  [];
+    $scope.createdNodes = [];
 
-    });
-
-    $scope.createdLinks =  graphCtrl.createdLinks;
-    console.log(d3Node.filterNodes(graphCtrl.createdNodes, graphCtrl.createdLinks));
-    $scope.createdNodes = d3Node.filterNodes(graphCtrl.createdNodes, graphCtrl.createdLinks);
-
-    $scope.nodeCounts = graphCtrl.createdNodes.length;
-    $scope.linkCounts = graphCtrl.createdLinks.length;
+    // graphCtrl.createdLinks.forEach(function (link) {
+    //     graphCtrl.createdNodes.forEach(function (node) {
+    //         if(node.id == link.source){
+    //             node.edgeCount++;
+    //         }
+    //     })
+    //
+    //
+    // });
+    //
 
 
     //gets this event from main controller
@@ -76,6 +84,8 @@ app.controller('graphController', function ($scope, $rootScope, searchModel, d3N
         $('#weightBtn').removeClass('btn-success').addClass('btn-default');
         $('#weightBtn').html('Off');
 
+        console.log(data["crLinks"]);
+        console.log(data["crNodes"]);
 
         $scope.createdLinks = data["crLinks"];
         $scope.createdNodes = d3Node.filterNodes(data["crNodes"], data["crLinks"]);

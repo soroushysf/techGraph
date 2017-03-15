@@ -12,7 +12,6 @@ app.controller('graphTableController', function ($scope, d3Node) {
 
         crNodes = d3Node.createNode(data["nodeDp"]);
 
-        console.log(crNodes);
         $scope.createdNodes = crNodes;
     });
 

@@ -13,7 +13,6 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
 
     app.post('/traverseGraph', function (req, res) {
         var queryData = req.body;
-        console.log(req.body);
         traverseDB.callingDBTraverse(queryData["req"], request)
             .then(function (result) {
                 result = JSON.parse(result);
@@ -25,7 +24,7 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
                 graph.associations = result["result"].filter(function (el) {
                     return( el["@class"] == "associations");
                 });
-                res.send(result);
+                res.send(graph);
             })
             .catch(function (err) {
                 res.send(err);
@@ -56,18 +55,10 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
                                     centerNode : centerNodeId,
                                     links : JSON.parse(links)
                                 };
-                                console.log(finalResult);
 
                                 res.send(finalResult);
-
                             });
-
-
-
                     })
-
-
-
             })
             .catch(function (err) {
                 res.send(err);

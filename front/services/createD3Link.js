@@ -32,7 +32,21 @@ app.service('d3Link', function () {
         return linkData.filter(function (link) {
             return (link.value > 0.2);
         });
-    }
+    };
+
+    // deletes edges that we have no nodes for them
+    d3Link.filterLink = function (links, nodes) {
+        nodes = nodes.map(function (node) {
+           return node.id;
+        });
+        return links.filter(function (link) {
+            var checkLink = false;
+                if(nodes.indexOf(link.source) != -1 && nodes.indexOf(link.target) != -1) {
+                    checkLink = true;
+            }
+            return checkLink;
+        });
+    };
 
     d3Link.linkDependencies = function (linkData, centerNodeId, direction) {
         var newLinks = [], i = 0;
