@@ -5,7 +5,7 @@
 function callingDB(queryData, request) {
 
     var options = {
-        url:  encodeURI('http://localhost:2480/query/tech_graph/sql/select out(),in(), * from techs where tech_title='+queryData.qry),
+        url:  encodeURI('http://localhost:2480/query/tech_graph/sql/select out(),in(), * from techs where tech_title='+queryData),
         method: 'GET',
         headers: {
             'Accept': 'application/json'

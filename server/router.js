@@ -11,6 +11,29 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
         res.sendFile(path.join(__dirname, '../front', 'index.html'));
     });
 
+
+    app.post('/nodeNames', function (req, res) {
+       var nodeNames = req.body, databaseRequests = [];
+
+        for(var i = 0; i < nodeNames["nodeNames"].length; i++) {
+            databaseRequests.push(
+                DB.callingDB(nodeNames["nodeNames"][i], request)
+            );
+        }
+        Promise.all(databaseRequests)
+            .then(function (result) {
+                result = result.map(function (el) {
+                    return JSON.parse(el);
+                })
+                console.log(result);
+                res.send(result);
+            })
+            .catch(function (err, st) {
+                console.log(st);
+                res.send(err);
+            })
+    });
+
     app.post('/traverseGraph', function (req, res) {
         var queryData = req.body;
         traverseDB.callingDBTraverse(queryData["req"], request)
@@ -26,15 +49,15 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
                 });
                 res.send(graph);
             })
-            .catch(function (err) {
-                res.send(err);
+            .catch(function (err, st) {
+                res.send(st);
             })
     });
 
     app.post('/queryGraph', function (req, res) {
 
         var queryData = req.body;
-        DB.callingDB(queryData, request)
+        DB.callingDB(queryData["qry"], request)
             .then(function (result) {
                 var centerNodeId = JSON.parse(result), finalResult;
                 var dataSend = {

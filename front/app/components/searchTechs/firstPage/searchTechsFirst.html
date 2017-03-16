@@ -1,0 +1,18 @@
+
+<div class="col-md-12 marginTop10" ng-controller="searchTechsCtrl">
+
+    <fieldset class="searchTech ">
+        <legend>Search Technology Graph</legend>
+        <ul class="input-list style-1 col-md-6 col-md-offset-3">
+            <li class="listStyle" ng-repeat="item in inputs">
+                <label class="labelInline" for="1">Tech Name:</label>
+                <input id="1" type="text" ng-model="itemValue[$index]">
+            </li>
+            <button class="btn btn-success btn-lg marginTop10" ng-click="searchGraph('/searchTechs/second')">Search Graph</button>
+
+        </ul>
+        <button class="btn btn-success marginTop10" ng-click="addField()">Add input</button>
+        <button class="btn btn-danger marginTop10" href="#/second" ng-click="deleteField()">Delete input</button>
+
+    </fieldset>
+</div>

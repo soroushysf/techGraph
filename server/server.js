@@ -22,7 +22,6 @@ var DB = require("./DBAccess"),
     depNames = require("./dependenciesNames"),
     depLinks = require("./dependenciesLinks"),
     traverseDB = require("./traverseGraph")
-
     ;
 
 

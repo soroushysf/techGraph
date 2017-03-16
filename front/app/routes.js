@@ -17,5 +17,11 @@ app.config(['$routeProvider','$locationProvider' ,function ($routeProvider, $loc
         .when('/graphTable', {
             templateUrl : 'app/components/GraphTable/graphTable.html'
         })
+        .when('/searchTechs/first', {
+            templateUrl : 'app/components/searchTechs/firstPage/searchTechsFirst.html'
+        })
+        .when('/searchTechs/second', {
+            templateUrl : 'app/components/searchTechs/secondPage/searchedGraph.html'
+        })
         .otherwise({redirectTo: '/'})
 }]);

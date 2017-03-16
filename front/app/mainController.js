@@ -70,6 +70,13 @@ app.controller('mainCtrl', function ($scope, $location, d3Node, d3Link) {
                 break;
             case '/' :
                 $scope.activeItem = 'item1';
+                break;
+            case '/searchTechs/first' :
+                $scope.activeItem = 'item4';
+                break;
+            case '/searchTechs/second' :
+                $scope.activeItem = 'item4';
+                break;
 
         }
     });

@@ -25,6 +25,8 @@ app.controller('graphController', function ($scope, searchModel, traverseModel, 
                 //filtering data to draw the new graph
 
 
+                console.log(graphData[1]);
+
                 graphData[1] = d3Node.createNode(graphData[1]);
 
                 graphData[2] = d3Link.filterValue(d3Link.createLinkDoubleCLick(graphData[2]), 0.2);
