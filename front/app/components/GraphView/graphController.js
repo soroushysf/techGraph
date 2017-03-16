@@ -27,7 +27,7 @@ app.controller('graphController', function ($scope, searchModel, traverseModel, 
 
                 graphData[1] = d3Node.createNode(graphData[1]);
 
-                graphData[2] = d3Link.filterValue(d3Link.createLinkDoubleCLick(graphData[2]));
+                graphData[2] = d3Link.filterValue(d3Link.createLinkDoubleCLick(graphData[2]), 0.2);
 
                 //------filtering ended---------//
                 successData.fetchedData["prevNodes"] = graphData[1];
@@ -42,15 +42,14 @@ app.controller('graphController', function ($scope, searchModel, traverseModel, 
     });
 
 
-    graphCtrl.firstData = {
-        "req" : "[23:11, 23:9, 24:15, 24:14]"
-    };
+    // read from config file
+    graphCtrl.firstData = firstTraverseData;
 
     traverseModel.getGraphNode(graphCtrl.firstData)
         .success(function (result) {
             graphCtrl.firstNodes = d3Node.createTraverseNode(result["techs"]);
             graphCtrl.firstLinks = d3Link.createLink(result["associations"]);
-            graphCtrl.firstLinks = d3Link.filterLink(graphCtrl.firstLinks, graphCtrl.firstNodes);
+            graphCtrl.firstLinks = d3Link.filterValue(d3Link.filterLink(graphCtrl.firstLinks, graphCtrl.firstNodes), 0.2);
 
 
             $scope.createdLinks =  graphCtrl.firstLinks;

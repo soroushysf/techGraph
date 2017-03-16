@@ -28,9 +28,9 @@ app.service('d3Link', function () {
         });
 
     };
-    d3Link.filterValue = function (linkData) {
+    d3Link.filterValue = function (linkData, filterThreshHold) {
         return linkData.filter(function (link) {
-            return (link.value > 0.2);
+            return (link.value > filterThreshHold);
         });
     };
 

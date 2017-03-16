@@ -22,7 +22,7 @@ app.controller('mainCtrl', function ($scope, $location, d3Node, d3Link) {
         crNodes = d3Node.createNode(graphData["nodeDp"]);
 
 
-        crLinks = d3Link.filterValue(d3Link.createLink(graphData["links"]["result"]));
+        crLinks = d3Link.filterValue(d3Link.createLink(graphData["links"]["result"]), 0.2);
 
 
 
