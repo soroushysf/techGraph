@@ -2,24 +2,23 @@
  * Created by soroush on 3/16/17.
  */
 
-app.controller('searchTechsCtrl', function ($scope, $location, nodeNamesModel) {
-
-    $scope.inputs = [{}];
+app.controller('searchTechsCtrl', function ($scope, $location, nodeNamesModel, d3Node, d3Link) {
+    var searchTechCtrl = this;
+    $scope.inputs = [{},{}];
     $scope.itemValue = [];
-    $scope.createdLinks = [], $scope.createdNodes = [];
+
     $scope.addField=function(){
         if($scope.inputs.length < 10) {
             $scope.inputs.push({})
         }
     };
     $scope.deleteField=function(){
-        if($scope.inputs.length < 10) {
+        if( 2 < $scope.inputs.length) {
             $scope.inputs.splice(0,1);
-            $scope.itemValue.splice(0,1);
+            $scope.itemValue.splice( $scope.itemValue.length-1,1);
         }
     };
-    
-    
+
     $scope.searchGraph = function (view) {
 
        var sendingData =  {
@@ -30,8 +29,17 @@ app.controller('searchTechsCtrl', function ($scope, $location, nodeNamesModel) {
 
         nodeNamesModel.getGraphNodeId(sendingData)
             .success(function (result) {
+                var graphData = {};
                 console.log(result);
+
+                graphData.nodes = d3Node.createTraverseNode(result["techs"]);
+                graphData.links = d3Link.createLink(result["associations"]);
+                graphData.links = d3Link.filterValue(d3Link.filterLink(graphData.links, graphData.nodes), 0.2);
+
+
+                //send data to second page controller by main controller
                 $location.path(view);
+                $scope.$emit('searchedGraphData', graphData);
 
 
             })
@@ -40,6 +48,5 @@ app.controller('searchTechsCtrl', function ($scope, $location, nodeNamesModel) {
             });
     };
 
-
-    $(".searchTech").height(($(".container-fluid").height())*0.87);
+    $scope.createdLinks = [], $scope.createdNodes = [];
 });

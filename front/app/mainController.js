@@ -81,6 +81,15 @@ app.controller('mainCtrl', function ($scope, $location, d3Node, d3Link) {
         }
     });
 
+    //send searched techs to searched techs view controller
+    $scope.$on('searchedGraphData',function (event, data) {
+        //set the trigger when partial(searched techs view controller) has fully changed, so the controller get the event
+        $scope.$on('$viewContentLoaded', function(){
+            $scope.$broadcast("searchedGraphDataFromMainCtrl", data);
+        });
+
+    });
+
 
     $scope.changeSate = function (item) {
         $scope.activeItem = item.id;

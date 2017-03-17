@@ -5,6 +5,7 @@
 
 function callingDBTraverse(queryData, request) {
 
+    console.log(queryData);
     var optionsLink;
     optionsLink = {
         url:  encodeURI('http://localhost:2480/query/tech_graph/sql/traverse * from '+queryData+' while $depth <= 1/1000'),

@@ -13,7 +13,7 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
 
 
     app.post('/nodeNames', function (req, res) {
-       var nodeNames = req.body, databaseRequests = [];
+        var nodeNames = req.body, databaseRequests = [];
 
         for(var i = 0; i < nodeNames["nodeNames"].length; i++) {
             databaseRequests.push(
@@ -24,9 +24,34 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
             .then(function (result) {
                 result = result.map(function (el) {
                     return JSON.parse(el);
-                })
-                console.log(result);
-                res.send(result);
+                });
+                //convert data for traverse to a proper query type
+                var nodeIDs ="[" +
+                        result.map(function (node) {
+                            return  node["result"][0]["@rid"].replace(/#/g, '');
+                        })
+                            .join(" ")
+                            .replace(/\s+/g, ", ")
+                        + "]"
+                    ;
+                //---------------------------
+                traverseDB.callingDBTraverse(nodeIDs, request)
+                    .then(function (result) {
+                        result = JSON.parse(result);
+                        var graph = {techs : {}, associations : {}};
+
+                        graph.techs = result["result"].filter(function (el) {
+                            return( el["@class"] == "techs");
+                        });
+                        graph.associations = result["result"].filter(function (el) {
+                            return( el["@class"] == "associations");
+                        });
+                        res.send(graph);
+                    })
+                    .catch(function (err, st) {
+                        console.log(st);
+                        res.send(err);
+                    })
             })
             .catch(function (err, st) {
                 console.log(st);
@@ -36,6 +61,7 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
 
     app.post('/traverseGraph', function (req, res) {
         var queryData = req.body;
+        console.log(typeof queryData["req"][0]);
         traverseDB.callingDBTraverse(queryData["req"], request)
             .then(function (result) {
                 result = JSON.parse(result);
