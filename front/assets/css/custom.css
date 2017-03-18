@@ -79,6 +79,7 @@ input:checked + .slider:before {
 .graphData {
     color : white;
     margin-right: 20px;
+    margin-left: 20px;
 }
 
 .listMiddle {
@@ -229,6 +230,7 @@ fieldset {
     border-radius: 5px;
     padding: 15px;
     text-align: center;
+    color: black;
 }
 
 fieldset legend {
@@ -240,7 +242,13 @@ fieldset legend {
     box-shadow: 0 0 0 5px #7186A4;
     margin-left: 20px;
 }
-
+fieldset span {
+    color: black !important;
+    float: left;
+}
+fieldset #weightBtn {
+    float: left;
+}
 
 .style-1 input[type="text"] {
     margin: 0;

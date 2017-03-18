@@ -4,13 +4,13 @@
 
 
 
-app.controller('mainCtrl', function ($scope, $location, d3Node, d3Link) {
+app.controller('mainCtrl', function ($scope, $rootScope, $location, d3Node, d3Link) {
 
     $scope.title = "Tech Graph";
     $scope.items = menuItems;
     $scope.graphD = {};
 
-    $scope.$on("fillGraphData",  function (event,graphData) {
+    $rootScope.$on("fillGraphData",  function (event,graphData) {
         $scope.$broadcast("graphTableData", graphData);
         var crNodes=[], crLinks=[];
 

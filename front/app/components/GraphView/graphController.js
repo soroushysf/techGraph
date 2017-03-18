@@ -2,7 +2,7 @@
  * Created by soroush on 12/11/16.
  */
 
-app.controller('graphController', function ($scope, searchModel, traverseModel, d3Node, d3Link) {
+app.controller('graphController', function ($scope, searchModel, traverseModel, d3Node, d3Link, dataFormCtrlFunc, graphCtrlDataFunc) {
 
     var graphCtrl = this;
     $scope.graphViewTitle = "Graph View";
@@ -10,37 +10,9 @@ app.controller('graphController', function ($scope, searchModel, traverseModel, 
 
     // declared in graph directive (graphData => 0: titles, 1: nodes, 2: links)
     $scope.$on("dataFromCtrl",function (event ,graphData) {
-        var sendingData ={
-            qry :  JSON.stringify(graphData[0]),
-            limit : 1
-        };
 
-        searchModel.getGraphNode(sendingData)
+        dataFormCtrlFunc.onEventFunc(graphData);
 
-            .success(function (data, status, headers, config) {
-
-                var successData = this;
-                successData.fetchedData = data;
-
-                //filtering data to draw the new graph
-
-
-                console.log(graphData[1]);
-
-                graphData[1] = d3Node.createNode(graphData[1]);
-
-                graphData[2] = d3Link.filterValue(d3Link.createLinkDoubleCLick(graphData[2]), 0.2);
-
-                //------filtering ended---------//
-                successData.fetchedData["prevNodes"] = graphData[1];
-                successData.fetchedData["prevLinks"] = graphData[2];
-
-                $scope.$emit("fillGraphData", successData.fetchedData);
-            })
-
-            .catch(function (data, status, headers, config) {
-                console.log(status);
-            })
     });
 
 
@@ -81,26 +53,12 @@ app.controller('graphController', function ($scope, searchModel, traverseModel, 
     //gets this event from main controller
     $scope.$on("graphControllerData", function (event, data) {
 
+        var graphData = graphCtrlDataFunc.onEventFunc(data);
 
-        $('#weightBtn').removeClass('btn-success').addClass('btn-default');
-        $('#weightBtn').html('Off');
-
-        console.log(data["crLinks"]);
-        console.log(data["crNodes"]);
-
-        $scope.createdLinks = data["crLinks"];
-        $scope.createdNodes = d3Node.filterNodes(data["crNodes"], data["crLinks"]);
-
-        $scope.createdLinks.forEach(function (link) {
-            $scope.createdNodes.forEach(function (node) {
-                if (node.id == link.source || node.id == link.target) {
-                    node.edgeCount++;
-                }
-            })
-        });
-
-        $scope.nodeCounts = $scope.createdNodes.length;
-        $scope.linkCounts = $scope.createdLinks.length;
+        $scope.createdLinks = graphData.createdLinks;
+        $scope.createdNodes = graphData.createdNodes
+        $scope.nodeCounts = graphData.createdNodes.length;
+        $scope.linkCounts = graphData.createdLinks.length;
     });
 
 

@@ -10,5 +10,27 @@
         <graph-view d3-links="createdLinks" d3-nodes="createdNodes"> </graph-view>
 
         </div>
+
+
+        <div class="marginTop10 col-md-12">
+            <span class="graphData">Nodes : {{nodeCounts}} </span>
+            <span class="graphData"> Edges : {{linkCounts}}</span>
+            <span class="graphData">Current Node Name :  </span>
+            <span id="nodeName" class="graphData"></span>
+        </div>
+        <div class="marginTop10 col-md-12">
+
+            <span class="graphData">show weights :</span>
+
+            <button type="button" id="weightBtn" class="btn btn-default" data-toggle="button" aria-pressed="true" autocomplete="off" ng-click="weightToggle()">
+                Off
+            </button>
+
+            <span class="graphData">Searched Technologies :
+            </span>
+            <span ng-repeat="item in searchedTechs">{{item}}, </span>
+
+        </div>
     </fieldset>
+
 </div>

@@ -4,6 +4,7 @@
 
 app.controller('searchTechsCtrl', function ($scope, $location, nodeNamesModel, d3Node, d3Link) {
     var searchTechCtrl = this;
+
     $scope.inputs = [{},{}];
     $scope.itemValue = [];
 
@@ -34,8 +35,9 @@ app.controller('searchTechsCtrl', function ($scope, $location, nodeNamesModel, d
 
                 graphData.nodes = d3Node.createTraverseNode(result["techs"]);
                 graphData.links = d3Link.createLink(result["associations"]);
-                graphData.links = d3Link.filterValue(d3Link.filterLink(graphData.links, graphData.nodes), 0.2);
+                graphData.links = d3Link.filterValue(d3Link.filterLink(graphData.links, graphData.nodes), $scope.threshHold);
 
+                graphData.searchedTechNames = $scope.itemValue;
 
                 //send data to second page controller by main controller
                 $location.path(view);
