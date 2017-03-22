@@ -25,7 +25,8 @@ app.controller('searchTechsCtrl', function ($scope, $location, nodeNamesModel, d
        var sendingData =  {
          nodeNames : $scope.itemValue.map(function (el) {
              return JSON.stringify(el);
-         })
+         }),
+           traverseDepth : typeof $scope.traverseDepth !== 'undefined' ? $scope.traverseDepth : 1
        };
 
         nodeNamesModel.getGraphNodeId(sendingData)

@@ -35,7 +35,7 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
                         + "]"
                     ;
                 //---------------------------
-                traverseDB.callingDBTraverse(nodeIDs, request)
+                traverseDB.callingDBTraverse(nodeIDs, nodeNames["traverseDepth"],request)
                     .then(function (result) {
                         result = JSON.parse(result);
                         var graph = {techs : {}, associations : {}};
@@ -62,7 +62,7 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
     app.post('/traverseGraph', function (req, res) {
         var queryData = req.body;
         console.log(typeof queryData["req"][0]);
-        traverseDB.callingDBTraverse(queryData["req"], request)
+        traverseDB.callingDBTraverse(queryData["req"], 1, request)
             .then(function (result) {
                 result = JSON.parse(result);
                 var graph = {techs : {}, associations : {}};

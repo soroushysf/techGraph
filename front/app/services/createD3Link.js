@@ -29,6 +29,7 @@ app.service('d3Link', function () {
 
     };
     d3Link.filterValue = function (linkData, filterThreshHold) {
+        filterThreshHold = typeof filterThreshHold !== 'undefined' ? filterThreshHold : 0.2;
         return linkData.filter(function (link) {
             return (link.value > filterThreshHold);
         });
