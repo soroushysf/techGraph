@@ -3,20 +3,39 @@
 
     <fieldset class="searchTech ">
         <legend>Search Technology Graph</legend>
-        <ul class="input-list style-1 col-md-6 col-md-offset-3">
-            <li class="listStyle" ng-repeat="item in inputs">
-                <label class="labelInline" for="1">Tech Name:</label>
-                <input id="1" type="text" ng-model="itemValue[$index]">
-            </li>
-            <button class="btn btn-success btn-lg marginTop10" ng-click="searchGraph('/searchTechs/second')">Search Graph</button>
+        <h2>Technology Names</h2>
+        <ul class="input-list style-1 col-md-12">
+
+
+            <div class="col-md-12">
+                <li class="listStyle"  ng-repeat="item in inputs">
+                    <label class="labelInline" for="1">Tech Name:</label>
+                    <input id="1" type="text" ng-model="itemValue[$index]">
+
+                </li>
+            </div>
+            <div class="col-md-12" >
+                <button class="btn btn-success marginTop10" ng-click="addField()">+</button>
+                <button  class="btn btn-danger marginTop10" href="#/second" ng-click="deleteField()">-</button>
+            </div>
 
         </ul>
-        <label class="labelInline" for="threshHold">Thresh hold:</label>
-        <input id="threshHold" type="text" ng-model="threshHold">
-        <label class="labelInline" for="traverseDepth">traverse Depth:</label>
-        <input id="traverseDepth" type="text" ng-model="traverseDepth">
-        <button class="btn btn-success marginTop10" ng-click="addField()">Add input</button>
-        <button class="btn btn-danger marginTop10" href="#/second" ng-click="deleteField()">Delete input</button>
+        <hr>
+        <ul class="input-list style-1 col-md-12 marginTop10">
+            <h2>Options</h2>
 
+            <div class="col-md-6">
+            <label for="threshHold">Thresh hold:</label>
+            <input id="threshHold" type="text" ng-model="threshHold">
+            </div>
+            <div class="col-md-6">
+            <label   for="traverseDepth">traverse Depth:</label>
+            <input id="traverseDepth" type="text" ng-model="traverseDepth">
+            </div>
+        </ul>
+        <div class="col-md-12 marginTop10">
+            <button class="btn btn-success btn-lg marginTop10" ng-click="searchGraph('/searchTechs/second')">Search Graph</button>
+        </div>
     </fieldset>
+
 </div>

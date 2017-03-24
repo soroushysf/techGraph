@@ -224,7 +224,6 @@ input:focus {
 }
 
 fieldset {
-    font-family: sans-serif;
     border: 5px solid #2C476D;
     background: #ddd;
     border-radius: 5px;
@@ -249,7 +248,10 @@ fieldset span {
 fieldset #weightBtn {
     float: left;
 }
-
+fieldset h2 {
+    color: #496387;
+    margin: 10px auto 40px auto;
+}
 .style-1 input[type="text"] {
     margin: 0;
     font-family: sans-serif;
@@ -270,7 +272,24 @@ fieldset #weightBtn {
     display: inline-block ;
 }
 .listStyle {
+    float: left;
     margin-top: 10px;
+    margin-left: 50px;
+}
+
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.input-list {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 /* As hex codes */
 

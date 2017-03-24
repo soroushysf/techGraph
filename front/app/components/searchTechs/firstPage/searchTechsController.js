@@ -5,7 +5,7 @@
 app.controller('searchTechsCtrl', function ($scope, $location, nodeNamesModel, d3Node, d3Link) {
     var searchTechCtrl = this;
 
-    $scope.inputs = [{},{}];
+    $scope.inputs = [{}];
     $scope.itemValue = [];
 
     $scope.addField=function(){
@@ -14,7 +14,7 @@ app.controller('searchTechsCtrl', function ($scope, $location, nodeNamesModel, d
         }
     };
     $scope.deleteField=function(){
-        if( 2 < $scope.inputs.length) {
+        if( 1 < $scope.inputs.length) {
             $scope.inputs.splice(0,1);
             $scope.itemValue.splice( $scope.itemValue.length-1,1);
         }
@@ -26,8 +26,9 @@ app.controller('searchTechsCtrl', function ($scope, $location, nodeNamesModel, d
          nodeNames : $scope.itemValue.map(function (el) {
              return JSON.stringify(el);
          }),
-           traverseDepth : typeof $scope.traverseDepth !== 'undefined' ? $scope.traverseDepth : 1
+           traverseDepth : typeof $scope.traverseDepth !== 'undefined' ? $scope.traverseDepth * 2 : 1
        };
+       console.log(sendingData.traverseDepth);
 
         nodeNamesModel.getGraphNodeId(sendingData)
             .success(function (result) {
