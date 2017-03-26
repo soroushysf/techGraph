@@ -72,6 +72,12 @@ input:checked + .slider:before {
 .marginTop10 {
     margin-top: 10px;
 }
+.backBtn {
+    margin-bottom: 40px;
+}
+.floatRight{
+    float: right;
+}
 .tableHeader {
     background-color:#7186A4;
     color: white;

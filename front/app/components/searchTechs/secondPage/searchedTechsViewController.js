@@ -43,6 +43,7 @@ app.controller('searchedTechsViewCtrl', function ($scope, dataFormCtrlFunc, grap
         $scope.$broadcast("weightToggle");
     };
 
-        $(".searchTech").height(($(".container-fluid").height())*0.87);
+    $(".searchTech").height(($(".container-fluid").height())*0.94);
+    $(".searchTech").width(($(".container-fluid").width())*0.78);
 
 });

@@ -7,7 +7,7 @@
         <legend>Search Technology Graph</legend>
         <div class="graphWindow col-md-12">
 
-        <graph-view d3-links="createdLinks" d3-nodes="createdNodes"> </graph-view>
+            <graph-view d3-links="createdLinks" d3-nodes="createdNodes"> </graph-view>
 
         </div>
 
@@ -29,11 +29,11 @@
             <span class="graphData">Searched Technologies :
             </span>
             <span ng-repeat="item in searchedTechs">{{item}}, </span>
+            <span class="floatRight">
+                <a class="btn btn-success btn-lg " href="#/searchTechs/first">Back</a>
+            </span>
+        </div>
 
-        </div>
-        <div class="col-md-12 marginTop10">
-            <a class="btn btn-success btn-lg marginTop10" href="#/searchTechs/first">Back</a>
-        </div>
     </fieldset>
 
 </div>

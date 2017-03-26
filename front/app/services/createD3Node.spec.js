@@ -27,4 +27,42 @@ describe('d3Node service', function() {
         expect(d3Node.createNode(dataInp)[0].cluster).toBe(12);
 
     });
+    it('d3Node createTraverseNode method test', function () {
+        var dataInp = [
+            {
+                '@rid' :  "#23:11",
+                'tech_title' : "tech",
+                'edgeCount' : 1,
+                'cluster' : 12,
+                'icon' : ''
+            }
+        ];
+        expect(d3Node.createTraverseNode(dataInp)[0].id).toBe("2311");
+        expect(d3Node.createTraverseNode(dataInp)[0].title).toBe("tech");
+        expect(d3Node.createTraverseNode(dataInp)[0].cluster).toBe(12);
+
+    });
+
+    it('d3Node filterNodes method test', function () {
+        var nodeWithEdge = [
+                {
+                    'id' :  "2311"
+                }
+            ],
+            nodeWithoutEdge = [
+                {
+                    'id' :  "23"
+                }
+            ],
+            link = [
+                {
+                    'source' :  "2311",
+                    'target' :  "2312"
+                }
+            ]
+        ;
+        expect(d3Node.filterNodes(nodeWithEdge, link)[0].id).toBe("2311");
+        expect(d3Node.filterNodes(nodeWithoutEdge, link)[0]).toBe(undefined);
+
+    });
 });

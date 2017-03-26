@@ -38,8 +38,8 @@ app.service('d3Node', function () {
             return {
                 'id' :   node["@rid"].replace(/#|:/g,''),
                 'title' :  node["tech_title"],
-                'edgeCount' : 0,
-                'cluster' : Math.floor(Math.random() * 5) + 10,
+                'edgeCount' : node.edgeCount || 0,
+                'cluster' : node.cluster || Math.floor(Math.random() * 5) + 10,
                 'icon' : ''
             };
         });
