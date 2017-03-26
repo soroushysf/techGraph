@@ -12,7 +12,7 @@ app.service('d3Node', function () {
                 'id' :  node.id || node["result"][0]["@rid"].replace(/#|:/g,''),
                 'title' : node.title || node["result"][0]["tech_title"],
                 'edgeCount' : node.edgeCount || 0,
-                'cluster' : Math.floor(Math.random() * 5) + 10,
+                'cluster' : node.cluster || Math.floor(Math.random() * 5) + 10 ,
                 'icon' : ''
             };
         });
@@ -25,6 +25,7 @@ app.service('d3Node', function () {
 
             }
         }
+
 
 
         return nodesData;
@@ -69,8 +70,5 @@ app.service('d3Node', function () {
              return checkNode;
         });
     }
-
-
-
 
 });
