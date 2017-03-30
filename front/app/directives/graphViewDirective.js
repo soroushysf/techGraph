@@ -31,13 +31,13 @@ app.directive('graphView' , function () {
             var height = $('.graphWindow').height(),
                 width = $('.graphWindow').width();
             var myChart = d3.select(element[0]).append('svg')
-                    .style("width", width)
-                    .style("height", height)
-                    .style("background", "white")
-                    .attr('class', 'mainSvg')
-                ;
+                .style("width", width)
+                .style("height", height)
+                .style("background", "white")
+                .attr('class', 'mainSvg')
+            ;
             var nodes = newValues[1], links = newValues[0]
-                ;
+            ;
 
 
             myChart = myChart.call(d3.zoom().on("zoom", zoomed)).on("dblclick.zoom", null).append("g");
@@ -45,7 +45,7 @@ app.directive('graphView' , function () {
 
             var color = d3.scaleOrdinal(d3.schemeCategory10),
                 linkText
-                ;
+            ;
             /*            var toolTip = d3.select('body').append('div')
              .style('position', 'absolute')
              .style('padding', '5px 10px')
@@ -55,7 +55,15 @@ app.directive('graphView' , function () {
              .style('border-radius', '5px')
              ;*/
 
-
+            d3.select(element[0]).append('div')
+                .style('position', 'absolute')
+                .style('padding', '5px 10px')
+                .style('color', 'black')
+                .style('left', '0')
+                .style('top', '5px')
+                .html('<p><span>Person :</span> <i class="fa fa-user-o" aria-hidden="true"></i></p>' +
+                    '<p><span>Technology :</span> <i style="color : black" class="fa fa-circle" aria-hidden="true"></i></p>')
+            ;
             myChart
                 .append("svg:defs").selectAll("marker")
                 .data(["end"])      // Different link/path types can be defined here
@@ -73,17 +81,17 @@ app.directive('graphView' , function () {
 
 
             var simulation = d3.forceSimulation(nodes)
-                    .force("link", d3.forceLink().id(function (d) {
-                        return d.id
-                    })
-                        .distance(function (d) {
+                .force("link", d3.forceLink().id(function (d) {
+                    return d.id
+                })
+                    .distance(function (d) {
 
-                            return d.value * 1500
-                        }))
-                    .force("charge", d3.forceManyBody().strength(-1000))
-                    .force("center", d3.forceCenter(width / 2, height / 2))
-                    .on("tick", ticked)
-                ;
+                        return (1/d.value) * 100
+                    }))
+                .force("charge", d3.forceManyBody().strength(-1000))
+                .force("center", d3.forceCenter(width / 2, height / 2))
+                .on("tick", ticked)
+            ;
 
             simulation
                 .nodes(nodes)
@@ -100,7 +108,7 @@ app.directive('graphView' , function () {
                 .attr("stroke", "#333")
 
                 .style("stroke-width", function(d) {
-                    return 1/(d.value * 30 ) ;
+                    return   0.1  ;
                 })
                 .attr("marker-end", "url(#end)");
 
@@ -108,19 +116,19 @@ app.directive('graphView' , function () {
 
 
             var node = myChart.selectAll("g")
-                    .data(nodes)
-                    .enter().append("g")
-                    .attr("class", function(d) {
-                        return d["icon"];
-                    })
-                    .call(d3.drag()
-                        .on("start", dragstarted)
-                        .on("drag", dragged)
-                        .on("end", dragended)
+                .data(nodes)
+                .enter().append("g")
+                .attr("class", function(d) {
+                    return d["icon"];
+                })
+                .call(d3.drag()
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+                    .on("end", dragended)
 
-                    )
+                )
 
-                ;
+            ;
 
             d3.selectAll(".person")
                 .append('text')
