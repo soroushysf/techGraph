@@ -140,9 +140,10 @@ path.link {
     color:white ;
     float: left;
 }
-#searchLimit {
-    width : 60px;
+#searchThreshHold  {
+    width : 100px;
 }
+
 .logoImage {
     margin-left: 10px;
     margin-top: 5px;
@@ -157,6 +158,10 @@ path.link {
 .searchLabel {
     font-size: x-large;
     margin-right: 10px;
+}
+.searchThreshHold {
+    margin-left: 20px;
+    color : white;
 }
 input {
     transition: 800ms;

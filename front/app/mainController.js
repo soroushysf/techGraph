@@ -4,7 +4,7 @@
 
 
 
-app.controller('mainCtrl', function ($scope, $rootScope, $location, d3Node, d3Link) {
+app.controller('mainCtrl', function ($scope, $rootScope, $location, d3Node, d3Link, dataFormCtrlFunc) {
 
     $scope.title = "Tech Graph";
     $scope.items = menuItems;
@@ -21,8 +21,8 @@ app.controller('mainCtrl', function ($scope, $rootScope, $location, d3Node, d3Li
 
         crNodes = d3Node.createNode(graphData["nodeDp"]);
 
-
-        crLinks = d3Link.filterValue(d3Link.createLink(graphData["links"]["result"]), 0.2);
+        console.log(dataFormCtrlFunc.getThreshHold());
+        crLinks = d3Link.filterValue(d3Link.createLink(graphData["links"]["result"]), dataFormCtrlFunc.getThreshHold());
 
 
 

@@ -15,10 +15,14 @@ app.controller('graphController', function ($scope, searchModel, traverseModel, 
 
     });
 
-
+    $scope.setThreshHold = function (field) {
+        console.log(field.queryThreshHold);
+        dataFormCtrlFunc.setThreshHold(field.queryThreshHold);
+    };
     // read from config file
     graphCtrl.firstData = firstTraverseData;
 
+    // make the first graph when user enters
     traverseModel.getGraphNode(graphCtrl.firstData)
         .success(function (result) {
             graphCtrl.firstNodes = d3Node.createTraverseNode(result["techs"]);
@@ -38,16 +42,6 @@ app.controller('graphController', function ($scope, searchModel, traverseModel, 
     $scope.createdLinks =  [];
     $scope.createdNodes = [];
 
-    // graphCtrl.createdLinks.forEach(function (link) {
-    //     graphCtrl.createdNodes.forEach(function (node) {
-    //         if(node.id == link.source){
-    //             node.edgeCount++;
-    //         }
-    //     })
-    //
-    //
-    // });
-    //
 
 
     //gets this event from main controller
@@ -56,12 +50,12 @@ app.controller('graphController', function ($scope, searchModel, traverseModel, 
         var graphData = graphCtrlDataFunc.onEventFunc(data);
 
         $scope.createdLinks = graphData.createdLinks;
-        $scope.createdNodes = graphData.createdNodes
+        $scope.createdNodes = graphData.createdNodes;
         $scope.nodeCounts = graphData.createdNodes.length;
         $scope.linkCounts = graphData.createdLinks.length;
     });
 
-
+    // for button setting when user changes the weight
     $scope.weightToggle = function () {
         $('#weightBtn').toggleClass('btn-default').toggleClass('btn-success');
 
@@ -73,6 +67,6 @@ app.controller('graphController', function ($scope, searchModel, traverseModel, 
         $scope.$broadcast("weightToggle");
     };
 
-    $(".graphView").height(($(".container-fluid").height())*0.87);
+    $(".graphView").height(($(".container-fluid").height())*0.86);
 
 });

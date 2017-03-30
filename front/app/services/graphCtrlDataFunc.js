@@ -10,8 +10,7 @@ app.service('graphCtrlDataFunc', function (d3Node) {
         $('#weightBtn').removeClass('btn-success').addClass('btn-default');
         $('#weightBtn').html('Off');
 
-        console.log(data["crLinks"]);
-        console.log(data["crNodes"]);
+
 
         eventFunc.createdLinks = data["crLinks"];
         eventFunc.createdNodes = d3Node.filterNodes(data["crNodes"], data["crLinks"]);

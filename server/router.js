@@ -87,27 +87,9 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
                         graph.associations = removeDuplicates(graph.associations, "@rid");
 
                         res.send(graph);
-                            // console.log(graph.techs);
-                            // console.log(graph.associations);
+
 
                         });
-                // traverseDB.callingDBTraverse(nodeIDs, nodeNames["traverseDepth"],request)
-                //     .then(function (result) {
-                //         result = JSON.parse(result);
-                //         var graph = {techs : {}, associations : {}};
-                //
-                //         graph.techs = result["result"].filter(function (el) {
-                //             return( el["@class"] == "techs");
-                //         });
-                //         graph.associations = result["result"].filter(function (el) {
-                //             return( el["@class"] == "associations");
-                //         });
-                //         res.send(graph);
-                //     })
-                //     .catch(function (err, st) {
-                //         console.log(st);
-                //         res.send(err);
-                //     })
             })
             .catch(function (err, st) {
                 console.log(st);

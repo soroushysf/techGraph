@@ -3,7 +3,7 @@
  */
 
 
-app.controller('searchBarCtrl', function ($scope, searchModel) {
+app.controller('searchBarCtrl', function ($scope, searchModel, dataFormCtrlFunc) {
 
     $scope.searchTitle = "Enter your query...";
     $scope.spinner = false;
@@ -11,7 +11,7 @@ app.controller('searchBarCtrl', function ($scope, searchModel) {
     $scope.sendData = function (field) {
         var sendingData ={
             qry :  JSON.stringify(field.queryInput),
-            limit : field.queryLimit
+            queryTh : field.queryThreshHold
             }
             ;
         $scope.spinner = true;
@@ -29,6 +29,7 @@ app.controller('searchBarCtrl', function ($scope, searchModel) {
 
         $('#weightBtn').removeClass('btn-success').addClass('btn-default');
         $('#weightBtn').html('Off');
+
     }
 
 

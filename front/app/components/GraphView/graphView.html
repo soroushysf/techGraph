@@ -21,7 +21,11 @@
             Off
         </button>
 
-
+        <label for="searchThreshHold" class="searchThreshHold">Link Thresh hold : </label>
+        <input id="searchThreshHold" ng-model="field.queryThreshHold" class="input-sm" type="text" placeholder="threshHold" required>
+        <button type="button" class="btn btn-success" data-toggle="button" aria-pressed="true" autocomplete="off" ng-click="setThreshHold(field)">
+            set
+        </button>
     </div>
 </div>
 

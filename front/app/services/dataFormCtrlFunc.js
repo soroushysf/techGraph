@@ -4,13 +4,26 @@
 
 app.service('dataFormCtrlFunc', function ($rootScope, searchModel, d3Link, d3Node) {
     var dataFormCtrlFunc = this;
+    var threshHold = 0.2;
 
+    dataFormCtrlFunc.setThreshHold = function (value) {
+        console.log("setter :");
+        console.log(value);
+
+        threshHold = value;
+    };
+
+    dataFormCtrlFunc.getThreshHold = function () {
+        console.log("getter is :");
+        console.log(threshHold);
+
+        return threshHold;
+    };
     dataFormCtrlFunc.onEventFunc = function (graphData) {
         var sendingData ={
             qry :  JSON.stringify(graphData[0]),
             limit : 1
         };
-
         searchModel.getGraphNode(sendingData)
 
             .success(function (data, status, headers, config) {
@@ -20,12 +33,12 @@ app.service('dataFormCtrlFunc', function ($rootScope, searchModel, d3Link, d3Nod
 
                 //filtering data to draw the new graph
 
+                console.log(threshHold);
 
-                console.log(graphData[1]);
 
                 graphData[1] = d3Node.createNode(graphData[1]);
 
-                graphData[2] = d3Link.filterValue(d3Link.createLinkDoubleCLick(graphData[2]), 0.2);
+                graphData[2] = d3Link.filterValue(d3Link.createLinkDoubleCLick(graphData[2]), dataFormCtrlFunc.getThreshHold());
 
                 //------filtering ended---------//
                 successData.fetchedData["prevNodes"] = graphData[1];
