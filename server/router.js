@@ -87,7 +87,8 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
                         graph.associations = removeDuplicates(graph.associations, "@rid");
 
                         res.send(graph);
-
+                            // console.log(graph.techs);
+                            // console.log(graph.associations);
 
                         });
             })

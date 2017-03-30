@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="354c8119-3404-4324-ba81-2af55bb82c8d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/front/app/services/searchBarData.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/front/app/services/traverseData.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/front/app/services/createD3Node.spec.js" afterPath="$PROJECT_DIR$/front/test/createD3Node.spec.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/front/app/services/nodeNames.js" afterPath="$PROJECT_DIR$/front/app/services/httpRequestToServer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/app/components/GraphView/graphController.js" afterPath="$PROJECT_DIR$/front/app/components/GraphView/graphController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/app/components/searchBar/searchBarController.js" afterPath="$PROJECT_DIR$/front/app/components/searchBar/searchBarController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/app/components/searchTechs/firstPage/searchTechsController.js" afterPath="$PROJECT_DIR$/front/app/components/searchTechs/firstPage/searchTechsController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/app/mainController.js" afterPath="$PROJECT_DIR$/front/app/mainController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/app/services/dataFormCtrlFunc.js" afterPath="$PROJECT_DIR$/front/app/services/dataFormCtrlFunc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/index.html" afterPath="$PROJECT_DIR$/front/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/karma.conf.js" afterPath="$PROJECT_DIR$/karma.conf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/router.js" afterPath="$PROJECT_DIR$/server/router.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,11 +34,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="httpRequestToServer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="httpRequestToServer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/app/services/httpRequestToServer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="31" />
+            <state relative-caret-position="165">
+              <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mainController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front/app/mainController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="373">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dataFormCtrlFunc.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/front/app/services/dataFormCtrlFunc.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="572">
+              <caret line="43" column="68" lean-forward="true" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="router.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/router.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="12" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -107,7 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/front/app/rout.js" />
         <option value="$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/common.rnc" />
         <option value="$PROJECT_DIR$/front/app/factory.js" />
         <option value="$PROJECT_DIR$/front/assets/d3backup.js" />
@@ -145,19 +167,20 @@
         <option value="$PROJECT_DIR$/front/app/services/createD3Node.js" />
         <option value="$PROJECT_DIR$/front/app/components/searchTechs/secondPage/searchedGraph.html" />
         <option value="$PROJECT_DIR$/front/app/directives/graphViewDirective.js" />
-        <option value="$PROJECT_DIR$/server/router.js" />
         <option value="$PROJECT_DIR$/front/app/services/graphCtrlDataFunc.js" />
         <option value="$PROJECT_DIR$/front/app/services/createD3Link.js" />
         <option value="$PROJECT_DIR$/front/app/components/searchBar/searchBar.html" />
         <option value="$PROJECT_DIR$/front/assets/css/custom.css" />
         <option value="$PROJECT_DIR$/front/app/components/GraphView/graphView.html" />
-        <option value="$PROJECT_DIR$/front/app/mainController.js" />
         <option value="$PROJECT_DIR$/front/app/services/nodeNames.js" />
         <option value="$PROJECT_DIR$/front/app/components/searchTechs/firstPage/searchTechsController.js" />
         <option value="$PROJECT_DIR$/front/app/components/searchBar/searchBarController.js" />
         <option value="$PROJECT_DIR$/front/app/components/GraphView/graphController.js" />
-        <option value="$PROJECT_DIR$/front/app/services/dataFormCtrlFunc.js" />
         <option value="$PROJECT_DIR$/front/index.html" />
+        <option value="$PROJECT_DIR$/server/router.js" />
+        <option value="$PROJECT_DIR$/front/app/services/httpRequestToServer.js" />
+        <option value="$PROJECT_DIR$/front/app/mainController.js" />
+        <option value="$PROJECT_DIR$/front/app/services/dataFormCtrlFunc.js" />
       </list>
     </option>
   </component>
@@ -1051,7 +1074,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="364209000" />
+    <option name="totallyTimeSpent" value="365340000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1064,6 +1087,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="856" y="-1080" width="1278" height="1080" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914045" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1076,7 +1100,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21683168" sideWeight="0.49186257" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21683168" sideWeight="0.49186257" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22168285" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1409,14 +1433,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-109">
-          <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/app/services/createD3Link.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -1492,14 +1508,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/app/mainController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="54" lean-forward="false" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/app/components/GraphView/graphController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -1532,14 +1540,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/app/services/dataFormCtrlFunc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="62" lean-forward="true" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="479">
@@ -1556,10 +1556,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="12" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/front/app/services/httpRequestToServer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="31" />
+        <state relative-caret-position="165">
+          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/app/mainController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/app/services/dataFormCtrlFunc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="43" column="68" lean-forward="true" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
           <folding />
         </state>
       </provider>

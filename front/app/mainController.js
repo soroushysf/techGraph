@@ -21,7 +21,6 @@ app.controller('mainCtrl', function ($scope, $rootScope, $location, d3Node, d3Li
 
         crNodes = d3Node.createNode(graphData["nodeDp"]);
 
-        console.log(dataFormCtrlFunc.getThreshHold());
         crLinks = d3Link.filterValue(d3Link.createLink(graphData["links"]["result"]), dataFormCtrlFunc.getThreshHold());
 
 

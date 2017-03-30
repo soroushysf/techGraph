@@ -38,7 +38,7 @@ app.service('dataFormCtrlFunc', function ($rootScope, httpRequestToServer, d3Lin
 
                 graphData[1] = d3Node.createNode(graphData[1]);
 
-                graphData[2] = d3Link.filterValue(d3Link.createLinkDoubleCLick(graphData[2]), dataFormCtrlFunc.getThreshHold());
+                graphData[2] = d3Link.filterValue(d3Link.createLinkDoubleCLick(graphData[2]), 0.2);
 
                 //------filtering ended---------//
                 successData.fetchedData["prevNodes"] = graphData[1];
