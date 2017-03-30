@@ -2,7 +2,7 @@
  * Created by soroush on 3/18/17.
  */
 
-app.service('dataFormCtrlFunc', function ($rootScope, searchModel, d3Link, d3Node) {
+app.service('dataFormCtrlFunc', function ($rootScope, httpRequestToServer, d3Link, d3Node) {
     var dataFormCtrlFunc = this;
     var threshHold = 0.2;
 
@@ -24,7 +24,7 @@ app.service('dataFormCtrlFunc', function ($rootScope, searchModel, d3Link, d3Nod
             qry :  JSON.stringify(graphData[0]),
             limit : 1
         };
-        searchModel.getGraphNode(sendingData)
+        httpRequestToServer.getData(sendingData, 'queryGraph')
 
             .success(function (data, status, headers, config) {
 

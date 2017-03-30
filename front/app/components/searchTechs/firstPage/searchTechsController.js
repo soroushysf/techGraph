@@ -2,7 +2,7 @@
  * Created by soroush on 3/16/17.
  */
 
-app.controller('searchTechsCtrl', function ($scope, $location, nodeNamesModel, d3Node, d3Link) {
+app.controller('searchTechsCtrl', function ($scope, $location, httpRequestToServer, d3Node, d3Link) {
     var searchTechCtrl = this;
 
     $scope.inputs = [{}];
@@ -30,7 +30,7 @@ app.controller('searchTechsCtrl', function ($scope, $location, nodeNamesModel, d
        };
        console.log(sendingData.traverseDepth);
 
-        nodeNamesModel.getGraphNodeId(sendingData)
+        httpRequestToServer.getData(sendingData, 'nodeNames')
             .success(function (result) {
                 var graphData = {};
                 console.log(result);

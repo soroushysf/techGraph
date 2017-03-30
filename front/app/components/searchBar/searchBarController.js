@@ -3,7 +3,7 @@
  */
 
 
-app.controller('searchBarCtrl', function ($scope, searchModel, dataFormCtrlFunc) {
+app.controller('searchBarCtrl', function ($scope, httpRequestToServer) {
 
     $scope.searchTitle = "Enter your query...";
     $scope.spinner = false;
@@ -16,7 +16,7 @@ app.controller('searchBarCtrl', function ($scope, searchModel, dataFormCtrlFunc)
             ;
         $scope.spinner = true;
 
-        searchModel.getGraphNode(sendingData)
+        httpRequestToServer.getData(sendingData, 'queryGraph')
 
             .success(function (data, status, headers, config) {
                 $scope.spinner = false;

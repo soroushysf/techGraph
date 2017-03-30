@@ -2,7 +2,7 @@
  * Created by soroush on 12/11/16.
  */
 
-app.controller('graphController', function ($scope, searchModel, traverseModel, d3Node, d3Link, dataFormCtrlFunc, graphCtrlDataFunc) {
+app.controller('graphController', function ($scope, httpRequestToServer, d3Node, d3Link, dataFormCtrlFunc, graphCtrlDataFunc) {
 
     var graphCtrl = this;
     $scope.graphViewTitle = "Graph View";
@@ -23,7 +23,7 @@ app.controller('graphController', function ($scope, searchModel, traverseModel, 
     graphCtrl.firstData = firstTraverseData;
 
     // make the first graph when user enters
-    traverseModel.getGraphNode(graphCtrl.firstData)
+    httpRequestToServer.getData(graphCtrl.firstData, 'traverseGraph')
         .success(function (result) {
             graphCtrl.firstNodes = d3Node.createTraverseNode(result["techs"]);
             graphCtrl.firstLinks = d3Link.createLink(result["associations"]);
