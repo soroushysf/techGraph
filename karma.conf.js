@@ -21,7 +21,9 @@ module.exports = function(config) {
         'front/app/bower_components/angularUtils-pagination/dirPagination.js',
         'front/app/app.js',
         'front/app/services/createD3Node.js',
-        'front/test/createD3Node.spec.js'
+        'front/app/services/createD3Link.js',
+        'front/test/createD3Node.spec.js',
+        'front/test/createD3Link.spec.js'
     ],
 
 

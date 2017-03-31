@@ -40,16 +40,7 @@ module.exports = function (app, path, express, bodyParser, DB, depNames, depLink
                 var nodeResult = result.map(function (el) {
                     return JSON.parse(el)["result"][0]["@rid"].replace(/#/g, '');
                 });
-                //convert data for traverse to a proper query type
-                // var nodeIDs ="[" +
-                //         result.map(function (node) {
-                //             return  node["result"][0]["@rid"].replace(/#/g, '');
-                //         })
-                //             .join(" ")
-                //             .replace(/\s+/g, ", ")
-                //         + "]"
-                //     ;
-                //---------------------------
+
                 databaseRequests = [];
 
                 console.log(nodeResult);
